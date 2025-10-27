@@ -1,0 +1,330 @@
+/* .slidev-code {
+  font-size: 1em !important;
+  line-height: 1.4em !important;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap');
+
+/* Apply to titles and headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+}
+
+/* Set title color */
+h1 {
+  color: #0099da !important;
+}
+
+/* Title slide layout */
+.title-slide {
+  text-align: left !important;
+  padding-top: 8rem !important;
+}
+
+.title-slide .slidev-layout {
+  margin-top: 4rem !important;
+}
+
+.title-slide h1,
+.title-slide h2 {
+  text-align: left !important;
+}
+
+.title-slide h1:first-of-type {
+  margin-top: 6rem !important;
+}
+
+/* Bring subtitles closer to titles on all slides */
+h2 {
+  margin-top: -0.5rem !important;
+}
+
+/* Reduce space between consecutive h1 elements */
+h1 + h1 {
+  margin-top: -2rem !important;
+}
+
+/* Navigation hint positioning */
+.navigation-hint {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  padding: 0.5rem 1rem !important;
+  cursor: pointer !important;
+}
+
+/* Apply to front page content */
+.slidev-layout.cover h1,
+.slidev-layout.cover h2,
+.slidev-layout.intro h1,
+.slidev-layout.intro h2 {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+}
+
+/* Optional: Apply to the entire front page */
+.slidev-layout.cover,
+.slidev-layout.intro {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+}
+
+:root {
+  --slidev-code-padding: 8px 10px;
+  --slidev-code-background: #16161690 !important;
+  
+  /* Milestone Brand Colors */
+  --theme-primary: #0099da;        /* Milestone Blue - main brand color */
+  --theme-secondary: #081927;      /* Milestone Midnight Blue - dominant brand color */
+  --theme-accent: #0c62ad;         /* Milestone Cobalt Blue */
+  --theme-success: #2caa57;        /* Milestone Forest Green */
+  --theme-warning: #ffe700;        /* Milestone Sunny Yellow */
+  --theme-error: #ef4444;          /* Error red (keeping standard) */
+  --theme-info: #d4edfc;           /* Milestone Sky Blue */
+  --theme-neutral: #9dadb0;        /* Milestone Stone Gray */
+  
+  /* Extended Milestone Palette */
+  --milestone-midnight: #081927;    /* Dominant brand color */
+  --milestone-misty-gray: #eceef0;  /* Secondary brand color */
+  --milestone-blue: #0099da;        /* Main brand blue */
+  --milestone-dark-blue: #023852;   /* Dark accent */
+  --milestone-cobalt: #0c62ad;      /* Cobalt blue */
+  --milestone-sky: #d4edfc;         /* Light sky blue */
+  --milestone-yellow: #ffe700;      /* Bright yellow */
+  --milestone-gray: #9dadb0;        /* Stone gray */
+  --milestone-green: #2caa57;       /* Forest green */
+  
+  /* Semantic Colors */
+  --color-brand: var(--theme-primary);
+  --color-highlight: var(--theme-accent);
+  --color-positive: var(--theme-success);
+  --color-negative: var(--theme-error);
+  --color-neutral: #6b7280;
+  
+  /* Background Colors */
+  --bg-primary: var(--theme-primary);
+  --bg-secondary: var(--theme-secondary);
+  --bg-accent: var(--theme-accent);
+  
+  /* Text Colors */
+  --text-primary: var(--theme-primary);
+  --text-secondary: var(--theme-secondary);
+  --text-accent: var(--theme-accent);
+}
+
+h6 {
+  text-transform: initial !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+.dark #slide-content {
+  background-color: black !important;
+  color: white !important;
+}
+
+.light #slide-content {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Transitions */
+.slidev-vclick-target {
+  transition:
+    opacity 500ms ease,
+    filter 200ms ease,
+    color 300ms ease;
+}
+
+.slidev-vclick-hidden {
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(3px);
+}
+
+.fade-out-leave-active {
+  transition:
+    opacity calc(var(--slidev-transition-duration) * 0.6) ease-out,
+    filter 200ms ease;
+}
+
+.fade-out-enter-active {
+  transition:
+    opacity calc(var(--slidev-transition-duration) * 0.8) ease-in,
+    filter 200ms ease;
+  transition-delay: calc(var(--slidev-transition-duration) * 0.6);
+}
+
+.fade-out-enter-from,
+.fade-out-leave-to {
+  opacity: 0;
+  filter: blur(5px);
+}
+
+.slidev-code .line {
+  transition: opacity 200ms ease;
+}
+
+iframe {
+  background: black;
+}
+
+/* ---- */
+
+@keyframes balance-shake {
+  0% {
+    transform: rotate(13deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(13deg);
+  }
+}
+
+@keyframes balance-move-left {
+  0% {
+    transform: translate(0, -27px);
+  }
+  50% {
+    transform: translate(3px, -40px);
+  }
+  100% {
+    transform: translate(0, -27px);
+  }
+}
+
+@keyframes balance-move-right {
+  0% {
+    transform: translate(-7px, 25px);
+  }
+  50% {
+    transform: translate(-12px, 38px);
+  }
+  100% {
+    transform: translate(-7px, 25px);
+  }
+}
+
+.animate-balance-shake {
+  transform: rotate(13deg);
+  animation: balance-shake 3s infinite;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+
+.animate-balance-move-left {
+  transform: translate(0, -27px);
+  animation: balance-move-left 3s infinite;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+
+.animate-balance-move-right {
+  transform: translate(-7px, 25px);
+  animation: balance-move-right 3s infinite;
+  animation-delay: 1s;
+  animation-timing-function: ease;
+}
+
+.slidev-code {
+  backdrop-filter: blur(10px);
+  border: 1px solid #eee1;
+}
+
+.rough-annotation > path[stroke-width='2'] {
+  stroke-width: calc(2px * var(--slidev-slide-scale));
+}
+
+/* Magic Links */
+.markdown-magic-link {
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(6px);
+  line-height: 100%;
+  color: #fffc;
+  --uno: gap-1 transition rounded px1 py1 mx--0.5 important-border-0
+    font-condensed;
+}
+
+.markdown-magic-link:hover {
+  background: #8883;
+}
+
+.markdown-magic-link-image {
+  display: inline-block;
+  height: 1.2em;
+  width: 1.2em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 2px;
+}
+
+.markdown-magic-link.markdown-magic-link-github-at {
+  transform: translateY(6px);
+  --uno: pl-0 py-0 pr2 uppercase text-sm gap-1.2 rounded-full;
+}
+
+.markdown-magic-link.markdown-magic-link-github-at .markdown-magic-link-image {
+  height: 1.6em;
+  width: 1.6em;
+  border-radius: 50%;
+}
+
+.footnotes-sep {
+  display: none;
+}
+
+/* è„šæ³¨ */
+.footnotes > .footnotes-list {
+  margin-top: 12px;
+  opacity: 0.9;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+.footnotes > .footnotes-list p {
+  margin: 0;
+}
+
+/* Theme Color Utility Classes */
+.text-theme-primary { color: var(--theme-primary) !important; }
+.text-theme-secondary { color: var(--theme-secondary) !important; }
+.text-theme-accent { color: var(--theme-accent) !important; }
+.text-theme-success { color: var(--theme-success) !important; }
+.text-theme-warning { color: var(--theme-warning) !important; }
+.text-theme-error { color: var(--theme-error) !important; }
+
+.bg-theme-primary { background-color: var(--theme-primary) !important; }
+.bg-theme-secondary { background-color: var(--theme-secondary) !important; }
+.bg-theme-accent { background-color: var(--theme-accent) !important; }
+.bg-theme-success { background-color: var(--theme-success) !important; }
+.bg-theme-warning { background-color: var(--theme-warning) !important; }
+.bg-theme-error { background-color: var(--theme-error) !important; }
+
+.border-theme-primary { border-color: var(--theme-primary) !important; }
+.border-theme-secondary { border-color: var(--theme-secondary) !important; }
+.border-theme-accent { border-color: var(--theme-accent) !important; }
+
+/* Milestone Brand Specific Colors */
+.text-milestone-midnight { color: var(--milestone-midnight) !important; }
+.text-milestone-blue { color: var(--milestone-blue) !important; }
+.text-milestone-misty-gray { color: var(--milestone-misty-gray) !important; }
+.text-milestone-green { color: var(--milestone-green) !important; }
+.text-milestone-yellow { color: var(--milestone-yellow) !important; }
+
+.bg-milestone-midnight { background-color: var(--milestone-midnight) !important; }
+.bg-milestone-blue { background-color: var(--milestone-blue) !important; }
+.bg-milestone-misty-gray { background-color: var(--milestone-misty-gray) !important; }
+.bg-milestone-green { background-color: var(--milestone-green) !important; }
+.bg-milestone-yellow { background-color: var(--milestone-yellow) !important; }
+
+.border-milestone-midnight { border-color: var(--milestone-midnight) !important; }
+.border-milestone-blue { border-color: var(--milestone-blue) !important; }
+.border-milestone-misty-gray { border-color: var(--milestone-misty-gray) !important; }
+
+/* Theme Color with Opacity */
+.bg-theme-primary-10 { background-color: color-mix(in srgb, var(--theme-primary) 10%, transparent) !important; }
+.bg-theme-primary-20 { background-color: color-mix(in srgb, var(--theme-primary) 20%, transparent) !important; }
+.bg-theme-secondary-10 { background-color: color-mix(in srgb, var(--theme-secondary) 10%, transparent) !important; }
+.bg-theme-secondary-20 { background-color: color-mix(in srgb, var(--theme-secondary) 20%, transparent) !important; }
