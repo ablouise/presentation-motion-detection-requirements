@@ -1,10 +1,16 @@
+
 # EPIC 7: Release Roadmap & Jira Tracking
 
-Objective: Align development and delivery with XProtect 2025 R3 and Arcules Fall 2025 releases.
-
-<InfoCardV2 
-  class="mt-4"
-  :items="[
+<EpicCardsSlide
+  :cards="[
+    {
+      title: 'Objective',
+      themeColor: 'primary',
+      icon: '🎯',
+      pros: [
+        'Align development and delivery with XProtect 2025 R3 and Arcules Fall 2025 releases.'
+      ]
+    },
     {
       title: 'Features',
       themeColor: 'info',
@@ -26,8 +32,6 @@ Objective: Align development and delivery with XProtect 2025 R3 and Arcules Fall
       ]
     }
   ]"
-  use-theme-colors
 />
-<template #footer>
-  <div class="text-xs opacity-50">EPIC 7: Roadmap & Tracking overview</div>
-</template>
+
+<div class="text-xs opacity-50 mt-4">EPIC 7: Roadmap & Tracking overview</div>

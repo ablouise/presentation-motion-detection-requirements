@@ -1,38 +1,48 @@
 # EPIC 1: Motion Detection Engine Redesign
 
-Objective: Deliver a cascaded, hierarchical motion detection engine leveraging compressed stream data (H.264, H.265, AV1) running entirely on CPU.
-
-<InfoCardV2 
-  class="mt-4"
-  :items="[
+<EpicCardsSlide
+  :cards="[
+    {
+      title: 'Objective',
+      themeColor: 'primary',
+      icon: '🎯',
+      pros: [
+        'Run entirely on CPU for utilising current hardware and reducing the operating cost'
+      ]
+    },
     {
       title: 'Features',
       themeColor: 'info',
-      icon: 'i-carbon:list',
+      icon: '📋',
       pros: [
-        'Analyze motion vectors and macroblock metadata without full frame decoding',
-        'Segment and cluster motion vectors into moving objects (classical approach)',
-        'Scene-adaptive logic: semantic segmentation for optimal detection per scene',
-        'Ignore zones: auto-segment and exclude irrelevant regions (sky, trees, flags)',
+        'Analyze motion vectors without full frame decoding',
+        'Filter zones: auto-segment and exclude irrelevant regions (sky, trees, flags)',
         'Stationary motion filtering: ignore static sources (escalators, waving trees)',
-        'Depth normalization: lightweight monocular depth estimation for small/far objects',
-        'Self-supervised learning for small model adaptation using stream metadata'
       ]
     },
     {
       title: 'Success Metrics',
       themeColor: 'success',
-      icon: 'i-carbon:chart-bar',
+      icon: '📊',
       pros: [
-        '≥50% reduction in false activity detection compared to legacy algorithm',
+        '≥50% false activity (events) detection in false activity detection compared to legacy algorithm',
         '2x faster runtime than current solution',
-        'No missed motion events (recall ≥ baseline)',
-        'Scalable: 50 cameras @ 70% CPU (entry), 500 cameras @ 70% CPU (high-end)'
+        'Equall or less than missed motion events (recall ≥ baseline)',
+        '600 cameras @ 70% CPU (high-end - husky we got access to)'
+      ]
+    },
+    {
+      title: 'Timeline',
+      themeColor: 'warning',
+      icon: '⏱️',
+      pros: [
+        'Q1 2026: Research & prototyping',
+        'Q2 2026: Core engine development',
+        'Q3 2026: Testing & optimization',
+        'Q4 2026: Production release'
       ]
     }
   ]"
-  use-theme-colors
 />
-<template #footer>
-  <div class="text-xs opacity-50">EPIC 1: Engine Redesign overview</div>
-</template>
+
+<div class="text-xs opacity-50 mt-4">EPIC 1: Engine Redesign overview</div>

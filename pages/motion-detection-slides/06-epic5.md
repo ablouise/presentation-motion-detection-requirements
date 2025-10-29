@@ -1,10 +1,16 @@
+
 # EPIC 5: XProtect Integration
 
-Objective: Deliver full feature parity for motion detection as a plugin within XProtect.
-
-<InfoCardV2 
-  class="mt-4"
-  :items="[
+<EpicCardsSlide
+  :cards="[
+    {
+      title: 'Objective',
+      themeColor: 'primary',
+      icon: '🎯',
+      pros: [
+        'Deliver full feature parity for motion detection as a plugin within XProtect.'
+      ]
+    },
     {
       title: 'Features',
       themeColor: 'info',
@@ -28,8 +34,6 @@ Objective: Deliver full feature parity for motion detection as a plugin within X
       ]
     }
   ]"
-  use-theme-colors
 />
-<template #footer>
-  <div class="text-xs opacity-50">EPIC 5: XProtect Integration overview</div>
-</template>
+
+<div class="text-xs opacity-50 mt-4">EPIC 5: XProtect Integration overview</div>

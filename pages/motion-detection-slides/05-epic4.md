@@ -1,10 +1,16 @@
+
 # EPIC 4: Arcules Integration
 
-Objective: Deploy motion detection in Arcules cloud with seamless event sync to XProtect.
-
-<InfoCardV2 
-  class="mt-4"
-  :items="[
+<EpicCardsSlide
+  :cards="[
+    {
+      title: 'Objective',
+      themeColor: 'primary',
+      icon: '🎯',
+      pros: [
+        'Deploy motion detection in Arcules cloud with seamless event sync to XProtect.'
+      ]
+    },
     {
       title: 'Features',
       themeColor: 'info',
@@ -28,8 +34,6 @@ Objective: Deploy motion detection in Arcules cloud with seamless event sync to 
       ]
     }
   ]"
-  use-theme-colors
 />
-<template #footer>
-  <div class="text-xs opacity-50">EPIC 4: Arcules Integration overview</div>
-</template>
+
+<div class="text-xs opacity-50 mt-4">EPIC 4: Arcules Integration overview</div>

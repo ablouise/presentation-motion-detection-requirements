@@ -1,10 +1,16 @@
+
 # EPIC 3: Performance Benchmarking & Event Validation
 
-Objective: Establish a robust benchmarking suite to validate detection accuracy, runtime, and event-based metrics.
-
-<InfoCardV2 
-  class="mt-4"
-  :items="[
+<EpicCardsSlide
+  :cards="[
+    {
+      title: 'Objective',
+      themeColor: 'primary',
+      icon: '🎯',
+      pros: [
+        'Establish a robust benchmarking suite to validate detection accuracy, runtime, and event-based metrics.'
+      ]
+    },
     {
       title: 'Features',
       themeColor: 'info',
@@ -32,8 +38,6 @@ Objective: Establish a robust benchmarking suite to validate detection accuracy,
       ]
     }
   ]"
-  use-theme-colors
 />
-<template #footer>
-  <div class="text-xs opacity-50">EPIC 3: Benchmarking & Validation overview</div>
-</template>
+
+<div class="text-xs opacity-50 mt-4">EPIC 3: Benchmarking & Validation overview</div>

@@ -1,10 +1,16 @@
-# EPIC 8: Performance Optimization for FFmpeg
 
-Objective: Optimize FFmpeg for all supported video streams to maximize throughput and minimize CPU usage.
+# EPIC 7: Performance Optimization for FFmpeg
 
-<InfoCardV2 
-  class="mt-4"
-  :items="[
+<EpicCardsSlide
+  :cards="[
+    {
+      title: 'Objective',
+      themeColor: 'primary',
+      icon: '🎯',
+      pros: [
+        'Optimize FFmpeg for all supported video streams to maximize throughput and minimize CPU usage.'
+      ]
+    },
     {
       title: 'Features',
       themeColor: 'info',
@@ -28,8 +34,6 @@ Objective: Optimize FFmpeg for all supported video streams to maximize throughpu
       ]
     }
   ]"
-  use-theme-colors
 />
-<template #footer>
-  <div class="text-xs opacity-50">EPIC 8: FFmpeg Optimization overview</div>
-</template>
+
+<div class="text-xs opacity-50 mt-4">EPIC 8: FFmpeg Optimization overview</div>
