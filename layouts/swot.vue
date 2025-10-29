@@ -1,104 +1,64 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import SwotMatrix from '../components/cards/SwotMatrix.vue'
 
 interface LayoutProps {
-  strengths?: string | string[]
-  weaknesses?: string | string[]
-  opportunities?: string | string[]
-  threats?: string | string[]
-  titles?: Partial<Record<'strengths'|'weaknesses'|'opportunities'|'threats', string>>
+  strengths?: string[] | string
+  weaknesses?: string[] | string
+  opportunities?: string[] | string
+  threats?: string[] | string
+  /** Optional internal matrix title (leave empty if using markdown heading in slide) */
+  matrixTitle?: string
+  /** Optional subtitle under the internal matrix title */
+  matrixSubtitle?: string
+  reveal?: boolean
+  startClick?: number
+  /** If true, always show internal title even if empty */
+  showMatrixTitle?: boolean
 }
 
-const props = defineProps<LayoutProps>()
+const props = withDefaults(defineProps<LayoutProps>(), {
+  matrixTitle: '',
+  matrixSubtitle: '',
+  reveal: false,
+  startClick: 1,
+  showMatrixTitle: false
+})
 
-function normalize(val: string | string[] | undefined): string {
-  if (!val) return ''
-  return Array.isArray(val) ? val.map(v => `- ${v}`).join('\n') : val
+function toArray(v?: string[] | string): string[] {
+  if (!v) return []
+  if (Array.isArray(v)) return v
+  // support newline separated list
+  return v.split(/\n+/).map(s => s.trim()).filter(Boolean)
 }
 
-const sections = [
-  { title: 'Strengths', key: 'strengths', fallback: 'Add strengths...' },
-  { title: 'Weaknesses', key: 'weaknesses', fallback: 'Add weaknesses...' },
-  { title: 'Opportunities', key: 'opportunities', fallback: 'Add opportunities...' },
-  { title: 'Threats', key: 'threats', fallback: 'Add threats...' },
-] as const
+const strengthsArr = toArray(props.strengths)
+const weaknessesArr = toArray(props.weaknesses)
+const opportunitiesArr = toArray(props.opportunities)
+const threatsArr = toArray(props.threats)
 
-const data = computed(() =>
-  sections.map(s => ({
-    id: s.key,
-    title: props.titles?.[s.key] || s.title,
-    markdown: normalize(props[s.key]) || s.fallback,
-  })),
-)
-
-function render(md: string) {
-  // Slidev internal renderer (version-dependent)
-  // @ts-ignore
-  const api = (globalThis as any)?.$slidev?.namespace?.renderMarkdown
-  return api ? api(md) : md
-}
+// Show internal title only if explicitly requested OR a matrixTitle provided
+const showTitle = props.showMatrixTitle || !!props.matrixTitle
 </script>
 
 <template>
-  <div class="swot-grid">
-    <div
-      v-for="sec in data"
-      :key="sec.id"
-      class="swot-cell"
-      :class="`swot-${sec.id}`"
-    >
-      <h2 class="swot-heading">{{ sec.title }}</h2>
-      <slot :name="sec.id">
-        <div
-          class="swot-body prose text-sm leading-snug"
-          v-html="render(sec.markdown)"
-        />
-      </slot>
-    </div>
+  <div class="swot-layout flex flex-col gap-6">
+    <!-- Standard slide header content (user markdown: # Heading, text, etc.) -->
+    <div class="swot-header"><slot /></div>
+    <SwotMatrix
+      :strengths="strengthsArr"
+      :weaknesses="weaknessesArr"
+      :opportunities="opportunitiesArr"
+      :threats="threatsArr"
+      :title="props.matrixTitle"
+      :subtitle="props.matrixSubtitle"
+      :show-title="showTitle"
+      :reveal="props.reveal"
+      :start-click="props.startClick"
+    />
   </div>
 </template>
 
 <style scoped>
-.swot-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-  gap: 1.4rem;
-  height: 100%;
-  padding: 1rem;
-}
-.swot-cell {
-  position: relative;
-  border: 1px solid var(--c-divider,#ddd);
-  border-radius: 12px;
-  padding: 1rem 1.1rem 1.3rem;
-  backdrop-filter: blur(6px);
-  background: linear-gradient(145deg,rgba(255,255,255,0.65),rgba(255,255,255,0.35));
-  box-shadow: 0 4px 10px -4px rgba(0,0,0,0.12);
-  border-top: 4px solid var(--accent);
-}
-.dark .swot-cell {
-  background: linear-gradient(145deg,rgba(40,40,40,0.6),rgba(25,25,25,0.35));
-  border-color: rgba(255,255,255,0.08);
-  box-shadow: 0 6px 14px -6px rgba(0,0,0,0.6);
-}
-.swot-heading {
-  margin: 0 0 0.6rem;
-  font-size: 1.05rem;
-  letter-spacing: .5px;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  color: var(--accent);
-}
-.swot-body :where(ul,ol){
-  margin: 0;
-  padding-left: 1.1rem;
-}
-.swot-body p {
-  margin: 0 0 .4rem;
-}
-.swot-strengths { --accent:#1b8a4b; }
-.swot-weaknesses { --accent:#b64040; }
-.swot-opportunities { --accent:#1a63b8; }
-.swot-threats { --accent:#b6791a; }
+.swot-layout { width:100%; }
+.swot-header :deep(> h1:first-child) { margin-top:0; }
 </style>

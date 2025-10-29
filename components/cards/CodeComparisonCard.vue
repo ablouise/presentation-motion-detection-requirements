@@ -1,8 +1,29 @@
 <!--
-Code Comparison Card Component - For detailed code examples and comparisons
+CodeComparisonCard Component - Side-by-side code examples with detailed analysis
+Perfect for comparing different approaches, technologies, or implementations
+
+Purpose:
+- Display code examples with syntax highlighting
+- Compare multiple solutions or approaches side-by-side
+- Highlight pros/cons or key features for each approach
+- Support for various programming languages and markup
+
+Visual Layout:
+┌─────────────────────────┐
+│ [Icon] Solution Name    │ ← Header (Docker, Pixi, etc.)
+├─────────────────────────┤
+│ ```language             │ ← Syntax-highlighted code block
+│ code content here       │   (bash, dockerfile, yaml, etc.)
+│ with proper formatting  │   
+│ ```                     │
+├─────────────────────────┤
+│ ⚠️  Issue description   │ ← Highlight items with icons
+│ ✅  Benefit description │   (positive/negative/neutral)
+│ ℹ️  Info description    │   
+└─────────────────────────┘
 
 Usage:
-<CodeComparisonCards 
+<CodeComparisonCard 
   :items="[
     {
       title: 'Docker Approach',
@@ -10,13 +31,29 @@ Usage:
       themeColor: 'info',
       clickIndex: 1,
       codeBlock: '# Docker example\nFROM ubuntu:20.04\nRUN apt-get update',
+      language: 'dockerfile',
       highlights: [
         { text: '30+ minutes to rebuild for one new package', icon: 'i-carbon:time', type: 'negative' },
-        { text: 'Read-only runtime limits dynamic ML tools', icon: 'i-carbon:locked', type: 'negative' }
+        { text: 'Read-only runtime limits dynamic ML tools', icon: 'i-carbon:locked', type: 'negative' },
+        { text: 'Consistent across environments', icon: 'i-carbon:checkmark', type: 'positive' }
       ]
+    },
+    {
+      title: 'Pixi Solution',
+      icon: 'i-file-icons:pixi',
+      themeColor: 'success', 
+      codeBlock: '# Pixi example\npixi add numpy\npixi run python',
+      language: 'bash'
     }
   ]"
 />
+
+Features:
+- Syntax highlighting for multiple languages
+- Themed styling with Milestone colors
+- Flexible highlight system (positive/negative/neutral/info)
+- Click animations and responsive grid layout
+- Template-based using BaseCard for consistency
 -->
 
 <template>

@@ -1,15 +1,13 @@
-
 # EPIC 7: Release Roadmap & Jira Tracking
 
-<EpicCardsSlide
-  :cards="[
+<EpicTemplate
+  :items="[
     {
       title: 'Objective',
       themeColor: 'primary',
-      icon: '🎯',
-      pros: [
-        'Align development and delivery with XProtect 2025 R3 and Arcules Fall 2025 releases.'
-      ]
+      icon: 'i-carbon:target',
+      fullWidth: true,
+      pros: ['Align development and delivery with XProtect 2025 R3 and Arcules Fall 2025 releases.']
     },
     {
       title: 'Features',
@@ -34,4 +32,6 @@
   ]"
 />
 
-<div class="text-xs opacity-50 mt-4">EPIC 7: Roadmap & Tracking overview</div>
+<template #footer>
+  <div class="text-xs opacity-50">EPIC 7: Roadmap & Tracking overview</div>
+</template>

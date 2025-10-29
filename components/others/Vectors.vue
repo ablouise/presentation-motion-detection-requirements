@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { normalize } from '../../composables/math'
+import { useSlideContext } from '@slidev/client'
+
+const { $slidev } = useSlideContext()
 
 const colors = [
   { text: 'text-sky-300', bg: 'bg-sky-800/30', border: 'border-sky-800' },

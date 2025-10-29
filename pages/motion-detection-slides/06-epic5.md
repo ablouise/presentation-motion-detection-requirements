@@ -1,15 +1,13 @@
-
 # EPIC 5: XProtect Integration
 
-<EpicCardsSlide
-  :cards="[
+<EpicTemplate
+  :items="[
     {
       title: 'Objective',
       themeColor: 'primary',
-      icon: '🎯',
-      pros: [
-        'Deliver full feature parity for motion detection as a plugin within XProtect.'
-      ]
+      icon: 'i-carbon:target',
+      fullWidth: true,
+      pros: ['Deliver full feature parity for motion detection as a plugin within XProtect.']
     },
     {
       title: 'Features',
@@ -35,5 +33,6 @@
     }
   ]"
 />
-
-<div class="text-xs opacity-50 mt-4">EPIC 5: XProtect Integration overview</div>
+<template #footer>
+  <div class="text-xs opacity-50">EPIC 5: XProtect Integration overview</div>
+</template>

@@ -1,23 +1,22 @@
-# EPIC 1: Motion Detection Engine Redesign
+# EPIC 1: Core Motion Detection
 
-<EpicCardsSlide
-  :cards="[
+<EpicTemplate
+  :items="[
     {
       title: 'Objective',
       themeColor: 'primary',
-      icon: '🎯',
-      pros: [
-        'Run entirely on CPU for utilising current hardware and reducing the operating cost'
-      ]
+      icon: 'i-carbon:target',
+      fullWidth: true,
+      pros: ['Deliver robust, real-time motion detection for all supported camera streams.']
     },
     {
       title: 'Features',
       themeColor: 'info',
-      icon: '📋',
+      icon: 'i-carbon:list',
       pros: [
         'Analyze motion vectors without full frame decoding',
         'Filter zones: auto-segment and exclude irrelevant regions (sky, trees, flags)',
-        'Stationary motion filtering: ignore static sources (escalators, waving trees)',
+        'Stationary motion filtering: ignore static sources (escalators, waving trees)'
       ]
     },
     {
@@ -27,7 +26,7 @@
       pros: [
         '≥50% false activity (events) detection in false activity detection compared to legacy algorithm',
         '2x faster runtime than current solution',
-        'Equall or less than missed motion events (recall ≥ baseline)',
+        'Equal or less than missed motion events (recall ≥ baseline)',
         '600 cameras @ 70% CPU (high-end - husky we got access to)'
       ]
     },
@@ -43,6 +42,8 @@
       ]
     }
   ]"
+  :columns="3"
 />
-
-<div class="text-xs opacity-50 mt-4">EPIC 1: Engine Redesign overview</div>
+<template #footer>
+  <div class="text-xs opacity-50">EPIC 1: Core Motion Detection overview</div>
+</template>

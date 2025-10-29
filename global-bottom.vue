@@ -39,6 +39,18 @@ const seed = computed<string>(() => (formatter.value.glowSeed === 'false' || for
   ? Date.now().toString()
   : formatter.value.glowSeed || 'default',
 )
+
+// Background image logic
+const backgroundImage = computed(() => {
+  const slideNo = currentSlideRoute.value.no
+  return `/backgrounds/${slideNo}.png`
+})
+
+const imageError = ref(false)
+
+function onImageError() {
+  imageError.value = true
+}
 const overflow = 0.3
 const disturb = 0.3
 const disturbChance = 0.3
@@ -132,13 +144,17 @@ function usePloy(number = 16) {
           closest = n
         }
       }
-      newPoints.delete(closest)
-      return closest
+      if (closest) {
+        newPoints.delete(closest)
+      }
+      return closest || o
     })
   }
 
   watch(currentSlideRoute, () => {
     jumpPoints()
+    // Reset image error state when slide changes
+    imageError.value = false
   })
 
   return poly
@@ -151,6 +167,20 @@ const poly3 = usePloy(3)
 
 <template>
   <div>
+    <!-- Background Image Layer -->
+    <div
+      v-if="!imageError"
+      class="bg-image transform-gpu overflow-hidden pointer-events-none"
+      aria-hidden="true"
+    >
+      <img 
+        :src="backgroundImage" 
+        class="background-img"
+        alt="Background"
+        @error="onImageError"
+      />
+    </div>
+    <!-- Glow Effect Layer -->
     <div
       class="bg transform-gpu overflow-hidden pointer-events-none"
       :style="{ filter: `blur(70px) hue-rotate(${hue}deg)` }"
@@ -182,6 +212,19 @@ const poly3 = usePloy(3)
   position: absolute;
   inset: 0;
   z-index: -10;
+}
+
+.bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: -20; /* Behind the glow effect */
+}
+
+.background-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3; /* Adjust opacity as needed */
 }
 
 .clip {

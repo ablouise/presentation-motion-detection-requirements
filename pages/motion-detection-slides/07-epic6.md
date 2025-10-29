@@ -1,15 +1,13 @@
-
 # EPIC 6: Dataset Documentation, Compliance & Technical Writing
 
-<EpicCardsSlide
-  :cards="[
+<EpicTemplate
+  :items="[
     {
       title: 'Objective',
       themeColor: 'primary',
-      icon: '🎯',
-      pros: [
-        'Ensure all datasets, software, and processes are documented to meet AI Act, SBOM, and enterprise compliance requirements, and provide clear technical writing for users and engineers.'
-      ]
+      icon: 'i-carbon:target',
+      fullWidth: true,
+      pros: ['Ensure all datasets, software, and processes are documented to meet AI Act, SBOM, and enterprise compliance requirements, and provide clear technical writing for users and engineers.']
     },
     {
       title: 'Features',
@@ -41,4 +39,6 @@
   ]"
 />
 
-<div class="text-xs opacity-50 mt-4">EPIC 6: Documentation & Compliance overview</div>
+<template #footer>
+  <div class="text-xs opacity-50">EPIC 6: Documentation & Compliance overview</div>
+</template>

@@ -1,5 +1,34 @@
 <!--
-Simplified NeutralCard using BaseCard and CardContent templates
+NeutralCardV2 Component - Glass morphism cards with neutral styling
+Template-based component using BaseCard and CardContent for consistency
+
+Purpose:
+- Elegant glass morphism design for subtle information display
+- Neutral colors that work well with any background
+- Perfect for secondary information or supporting content
+
+Visual Layout:
+┌─────────────────────────┐
+│ [Icon] Title            │ ← Glass header with backdrop blur
+├─────────────────────────┤
+│ • Detail Item 1         │ ← Semi-transparent content area
+│ • Detail Item 2         │ ← Bullet point details
+│ • Detail Item 3         │ ← Clean, minimal styling
+└─────────────────────────┘
+
+Usage:
+<NeutralCardV2 
+  :items="[
+    {
+      title: 'Features',
+      icon: 'i-carbon:tools',
+      details: [
+        { title: 'Fast Performance', description: 'Optimized for speed' },
+        { title: 'Easy Setup', description: 'Quick configuration' }
+      ]
+    }
+  ]"
+/>
 -->
 
 <template>

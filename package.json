@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "dev": "slidev  --open --remote=aienabledalarmmanagerpass",
+    "dev": "slidev --open --remote",
     "export": "slidev export --with-clicks --per-slide --wait-until none"
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.13.2",
     "@antfu/ni": "^25.0.0",
     "@iconify-json/bi": "^1.2.4",
-    "@iconify-json/carbon": "^1.2.8",
+    "@iconify-json/carbon": "^1.2.14",
     "@iconify-json/devicon": "^1.2.24",
     "@iconify-json/fluent": "^1.2.22",
     "@iconify-json/icon-park-outline": "^1.2.2",
@@ -47,6 +47,7 @@
     "typescript": "^5.8.3",
     "unocss": "^66.1.2",
     "vite": "^6.3.5",
+    "vite-plugin-singlefile": "^2.3.0",
     "vue": "^3.5.22"
   }
 }

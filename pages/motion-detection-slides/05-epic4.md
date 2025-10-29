@@ -1,15 +1,13 @@
-
 # EPIC 4: Arcules Integration
 
-<EpicCardsSlide
-  :cards="[
+<EpicTemplate
+  :items="[
     {
       title: 'Objective',
       themeColor: 'primary',
-      icon: '🎯',
-      pros: [
-        'Deploy motion detection in Arcules cloud with seamless event sync to XProtect.'
-      ]
+      icon: 'i-carbon:target',
+      fullWidth: true,
+      pros: ['Deploy motion detection in Arcules cloud with seamless event sync to XProtect.']
     },
     {
       title: 'Features',
@@ -35,5 +33,6 @@
     }
   ]"
 />
-
-<div class="text-xs opacity-50 mt-4">EPIC 4: Arcules Integration overview</div>
+<template #footer>
+  <div class="text-xs opacity-50">EPIC 4: Arcules Integration overview</div>
+</template>
