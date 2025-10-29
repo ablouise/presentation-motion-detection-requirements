@@ -11,35 +11,153 @@ exportFilename: KubeCon HK 2024.08 - Sit Back and Relax with Fault Awareness and
 lineNumbers: false
 drawings:
   persist: false
+mdc: true
+clicks: 0
+preload: false
+# glowSeed: 26
+glowSeed: 228
+routerMode: hash
 ---
 
-layout: swot
+# Sit Back and Relax with Fault Awareness and Robust Instant Recovery for Large Scale AI Workloads
+
+DaoCloud Fanshi Zhang, Kebe Liu
+
+<div w-full absolute bottom-0 left-0 flex items-center transform="translate-x--10 translate-y--10">
+  <div w-full flex items-center justify-end gap-4>
+    <img src="/KubeCon.png" h-10>
+    <img src="/CloudNativeCon.png" h="10.1">
+    <img src="/OpenSourceSummit.png" h-9>
+    <img src="/AI_dev.png" h-4>
+  </div>
+</div>
+
+<!--
+Hi!
+
+Good afternoon, and greetings to everyone attended our session here.
+
+In today's session, me, Fanshi Zhang, with another amazing software engineer Kebe Liu here will be presenting our work on some of the works we have done so far on distributed training of AI and workloads.
+
+But, don't worry if you are not familiar with machine learning or distributed training , we will get you covered when introducing the concepts.
+-->
+
+---
+layout: intro
+class: px-24
+glowSeed: 205
+---
+
+<div flex items-center justify-center>
+  <div
+    v-click flex flex-col gap-2 items-center justify-center transition duration-500 ease-in-out
+    :class="$clicks < 1 ? 'translate-x--20' : 'translate-x-0'"
+  >
+    <div flex items-center gap-6>
+      <img src="/DaoCloud.svg" h-40 />
+    </div>
+  </div>
+  <div
+    v-after pl-15 pr-15 transition duration-500 ease-in-out
+    :class="$clicks < 1 ? 'scale-80' : 'scale-100'"
+  >
+    <div i-carbon:close text-8xl />
+  </div>
+  <div
+    v-after flex flex-col gap-2 items-center justify-center transition duration-500 ease-in-out
+    :class="$clicks < 1 ? 'translate-x-20' : 'translate-x-0'"
+  >
+    <div flex items-center gap-6>
+      <div i-devicon:kubernetes inline-block text-6xl /> <span text-4xl text="[#5791f7]">Kubernetes</span>
+    </div>
+  </div>
+</div>
+
+<!--
+Before we start, let's introduce ourselves.
+
+[click] We are the software engineers come from DaoCloud, one of the famously known corporation that put much efforts into open source and Kubernetes ecosystems.
+
+With now primarily focusing on field to cohere Kubernetes and AI together.
+-->
+
+---
+layout: intro
+class: px-35
+glowSeed: 205
+---
+
+<div flex>
+  <div
+    v-click="1" flex flex-col items-start transition duration-500 ease-in-out
+    :class="$clicks < 1 ? 'translate-x--20' : 'translate-x-0'"
+  >
+    <img src="/person/kebe.jpeg" w-50 h-50 rounded-full object-cover mb-5>
+    <span font-semibold text-3xl>Kebe Liu</span>
+    <div>
+      <div>
+        <span class="opacity-70">Senior software engineer</span>
+      </div>
+      <div text-sm flex items-center gap-2 mt-4>
+        <div i-ri:github-fill /><span underline decoration-dashed font-mono decoration-zinc-300>kebe7jun</span>
+      </div>
+    </div>
+  </div>
+  <div flex-1 />
+  <div
+    v-click="2" flex flex-col items-end transition duration-500 ease-in-out
+    :class="$clicks < 2 ? 'translate-x-20' : 'translate-x-0'"
+  >
+    <img src="/person/neko.jpeg" w-50 h-50 rounded-full object-cover mb-5>
+    <span font-semibold text-3xl>Fanshi Zhang</span>
+    <div flex-col items-end>
+      <div>
+        <span class="opacity-70">Senior software engineer</span>
+      </div>
+      <div text-sm flex items-center justify-end gap-2 mt-4>
+        <div i-ri:github-fill /><span underline decoration-dashed font-mono decoration-zinc-300>nekomeowww</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+As background, [click] Kebe Liu is one of the member of Istio Steering Committee, while working on AI stuff, he is also focusing on the other Cloud native projects like Istio, eBPF, etc. in recent years.
+
+[click] Me, Fanshi Zhang, I am a software engineer at DaoCloud, focusing on AI and Kubernetes. I am also a contributor to the Kubernetes community. As well as contributor to Golang, Vue communities.
+-->
+
+---
+class: flex justify-center items-center gap-20 px40 text-xl
+---
+
+# Let's jump right into the rabbit hole
+
+<!--
+Without further ado, let's jump right into the rabbit hole and see what we have prepared for you today.
+
+The **first** one thing to get off... is **distributed training**...
+-->
+
+---
 class: py-10
-# Optional: uncomment to force InfoCard view even if adding slots later
-# forceInfoCard: true
-strengths:
-  - Strong brand
-  - Innovative team
-weaknesses:
-  - Limited budget
-  - Small market share
-opportunities:
-  - Growing demand
-  - Strategic partnerships
-threats:
-  - New competitors
-  - Regulatory changes
-titles:
-  strengths: Core Strengths
-  opportunities: Market Opportunities
-
+clicks: 2
+transition: 'none'
 ---
 
-# To community
+# Machine Learning 101
 
-<span>Let's improve it together</span>
+<span>Let's start with the basics</span>
 
-
+<div
+  v-if="$clicks <= 2"
+  transition duration-500 ease-in-out
+  :class="[
+    $clicks <= 1 ? '' : 'scale-0 opacity-0 translate-x--100 translate-y--20'
+  ]"
+>
+  <Vectors />
+</div>
 <div
   v-if="$clicks >= 1"
   absolute top-0 left-0
@@ -184,34 +302,68 @@ glowSeed: 120
 
 <div flex items-center gap-4>
 
-<IconCard 
-  :items="[
-    {
-      title: 'LLMs are large',
-      icon: 'i-carbon:intent-request-scale-out',
-      themeColor: 'accent',
-      clickIndex: 1
-    },
-    {
-      title: 'Single GPU doesn\'t fit in',
-      icon: 'i-carbon:intent-request-uninstall',
-      themeColor: 'accent',
-      clickIndex: 2
-    },
-    {
-      title: 'Distribute them to GPU clusters',
-      icon: 'i-carbon:ibm-cloud-bare-metal-servers-vpc',
-      themeColor: 'accent',
-      clickIndex: 3
-    },
-    {
-      title: 'Failures occur',
-      icon: 'i-carbon:data-error',
-      themeColor: 'error',
-      clickIndex: 4
-    }
-  ]"
-/>
+<v-clicks>
+  <div
+    :class="$clicks < 1 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid violet-800" bg="violet-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:intent-request-scale-out h-20 w-20 />
+    </div>
+    <div bg="violet-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>LLMs are large</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 2 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid purple-800" bg="purple-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:intent-request-uninstall h-20 w-20 />
+    </div>
+    <div bg="purple-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>Single GPU doesn't fit in</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 3 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid fuchsia-800" bg="fuchsia-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:ibm-cloud-bare-metal-servers-vpc h-20 w-20 />
+    </div>
+    <div bg="fuchsia-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>Distribute them to GPU clusters</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 4 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid pink-800" bg="pink-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:data-error h-20 w-20 />
+    </div>
+    <div bg="pink-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>Failures occur</span>
+    </div>
+  </div>
+</v-clicks>
 
 </div>
 
@@ -428,64 +580,18 @@ glow: right
 
 <br>
 
-<script setup>
-const distTrainingBullets = [
-  {
-    segments: [
-      { text: 'Instead of ' },
-      { icon: 'i-carbon:ibm-cloud-resiliency', colorClass: 'text-cyan-400', class: 'translate-y-0.5' },
-      { text: ' Deployment', code: true, colorClass: 'text-cyan-400' },
-      { text: ' like workloads, they are more like ' },
-      { icon: 'i-carbon:ibm-cloud-pak-manta-automated-data-lineage', colorClass: 'text-pink-400', class: 'translate-y-0.5' },
-      { text: ' StatefulSet', code: true, colorClass: 'text-pink-400' }
-    ]
-  },
-  {
-    segments: [
-      { text: 'When bootstrapping, the ' },
-      { text: 'main node', colorClass: 'text-violet-400' },
-      { text: ' (rank 0) will be the first to start' }
-    ]
-  },
-  {
-    segments: [
-      { text: 'Then negotiate with ' },
-      { text: 'other nodes', colorClass: 'text-blue-400' },
-      { text: ' (rank != 0) to join the training through ' },
-      { icon: 'i-bi:nvidia', colorClass: 'text-[#64b023]', class: 'translate-y-0.5 mr-0.5' },
-      { text: 'NCCL', colorClass: 'text-[#64b023]', code: true }
-    ],
-    children: [
-      { text: 'Calculate topology' },
-      { text: 'Calculate connectivity' },
-      { text: 'Calculate bandwidth' }
-    ]
-  },
-  {
-    segments: [
-      { text: 'Once everyone is ready, minibatch will be calculated and sent to each node' }
-    ]
-  },
-  {
-    segments: [
-      { text: 'Every step, or epoch, a ' },
-      { text: 'Ring AllReduce', colorClass: 'text-sky-300' },
-      { text: ' or ' },
-      { text: 'AllReduce', colorClass: 'text-sky-300' },
-      { text: ' operation will be performed across the nodes' }
-    ]
-  }
-]
-</script>
+<v-clicks depth="2">
 
-<ProgressiveBulletList
-  :items="distTrainingBullets"
-  :start-click="1"
-  bullet-style="none"
-  :nested-indent="22"
-  :cascade-children="true"
-  :allow-html="false"
-/>
+- Instead of <span text-cyan-400><div inline-block i-carbon:ibm-cloud-resiliency translate-y-0.8 /> `Deployment`</span> like workloads, they are more like <span text-pink-400><div inline-block i-carbon:ibm-cloud-pak-manta-automated-data-lineage translate-y-0.8 /> `StatefulSet`</span>
+- When bootstrapping, the <span text-violet-400>main node</span> (`rank 0`) will be the first to start
+- Then negotiate with <span text-blue-400>other nodes</span> (`rank != 0`) to join the training through <span text="[#64b023]"><div inline-block translate-y-0.8 mr-1 i-bi:nvidia />NCCL</span>
+  - Calculate topology
+  - Calculate connectivity
+  - Calculate bandwidth
+- Once everyone is ready, minibatch will be calculated and sent to each node
+- Every step, or epoch, a <span text-sky-300>Ring AllReduce</span> or <span text-sky-300 >AllReduce</span> operation will be performed across the nodes
+
+</v-clicks>
 
 <!--
 Hmm, so where is the so called "Irreversible" issues?
@@ -656,53 +762,77 @@ glowSeed: 100
 
 <div mt-6 />
 
-<script setup>
-const problemInfoCards = [
-  {
-    title: 'Blackbox within another blackbox',
-    icon: 'i-carbon:web-services-container',
-    themeColor: 'accent',
-    clickIndex: 1,
-    segments: [
-      { text: 'Distributed algorithm is implemented by ' },
-      { icon: 'i-devicon:pytorch', colorClass: 'text-[#f6432f]', class: 'translate-y-0.5 mr-1' },
-      { text: 'PyTorch', code: true, colorClass: 'text-[#f6432f]' },
-      { text: ', ' },
-      { icon: 'i-bi:nvidia', colorClass: 'text-[#64b023]', class: 'translate-y-0.5 mr-1' },
-      { text: 'NCCL', code: true, colorClass: 'text-[#64b023]' },
-      { text: ' itself.' }
-    ],
-    meta: ['Hard to debug','Hard to trace','Hard to manage','Hard to control']
-  },
-  {
-    title: 'Unreachable',
-    icon: 'i-carbon:sysplex-distributor',
-    themeColor: 'primary',
-    clickIndex: 2,
-    segments: [
-      { text: 'Unlike modern ' },
-      { icon: 'i-devicon:kubernetes', class: 'translate-y-0.5 mr-1' },
-      { text: 'Kubernetes Operators', colorClass: 'text-[#5791f7]' },
-      { text: ', healing & orchestrating still hard to achieve.' }
-    ],
-    meta: ['Hard to auto-heal','Hard to auto-recover','Hard to auto-mitigate']
-  },
-  {
-    title: 'Missing block of jigsaw',
-    icon: 'i-carbon:name-space',
-    themeColor: 'info',
-    clickIndex: 3,
-    segments: [
-      { text: 'Detecting failures of drivers, hardware, GPUs, or even network remains a challenge.' }
-    ],
-    meta: ['Hard to know root cause','Hard to collect NPD logs','Lack of observability']
-  }
-]
-</script>
+<div flex flex-col gap-4>
 
-<SlideContent :padded="false" :scroll="true" :max-width="140" wrapper-class="mt-2">
-  <InfoCardV2 :items="problemInfoCards" :columns="1" compact />
-</SlideContent>
+<v-clicks>
+
+<div border="2 solid violet-800/50" rounded-lg>
+  <div flex items-center bg="violet-800/30" px-3 py-2 text-violet-300>
+    <div i-carbon:web-services-container text-sm mr-1 />
+    <div text-xs>
+      <em>Blackbox with in another blackbox</em>
+    </div>
+  </div>
+  <div bg="violet-800/10" px-4 py-3>
+    <div>
+      <span>
+        Distributed algorithm is purely implemented by <span text="[#f6432f]"><div inline-block mr-1 translate-y-0.8 i-devicon:pytorch />PyTorch</span>, <span text="[#64b023]"><div inline-block translate-y-0.8 mr-1 i-bi:nvidia />NCCL</span> itself.
+      </span>
+    </div>
+    <div text-xs flex gap-2 mt-1 text-zinc-400>
+      <div>Hard to debug</div>
+      <div>Hard to trace</div>
+      <div>Hard to make it managed</div>
+      <div>Hard to make it controlled</div>
+    </div>
+  </div>
+</div>
+
+<div border="2 solid blue-800/50" rounded-lg>
+  <div flex items-center bg="blue-800/30" px-3 py-2 text-blue-300>
+    <div i-carbon:sysplex-distributor text-sm mr-1 />
+    <div text-xs>
+      <em>Unreachable</em>
+    </div>
+  </div>
+  <div bg="blue-800/10" px-4 py-3>
+    <div>
+      <span>
+        Unlike nowadays <div i-devicon:kubernetes inline-block translate-y-0.5 /> <span text="[#5791f7]">Kubernetes Operators</span>, healing, orchestrating still hard to achieve.
+      </span>
+    </div>
+    <div text-xs flex gap-2 mt-1 text-zinc-400>
+      <div>Hard to auto-heal</div>
+      <div>Hard to auto-recover</div>
+      <div>Hard to auto-mitigate</div>
+    </div>
+  </div>
+</div>
+
+<div border="2 solid cyan-800/50" rounded-lg>
+  <div flex items-center bg="cyan-800/30" px-3 py-2 text-cyan-300>
+    <div i-carbon:name-space text-sm mr-1 />
+    <div text-xs>
+      <em>Missing block of jigsaw</em>
+    </div>
+  </div>
+  <div bg="cyan-800/10" px-4 py-3>
+    <div>
+      <span>
+        Detecting failures of drivers, hardwares, GPUs, or even network is still a challenge.
+      </span>
+    </div>
+    <div text-xs flex gap-2 mt-1 text-zinc-400>
+      <div>Hard to know root cause</div>
+      <div>Hard to collect needed NPD events & logs</div>
+      <div>Lack of observability</div>
+    </div>
+  </div>
+</div>
+
+</v-clicks>
+
+</div>
 
 <!--
 Where went wrong?
@@ -756,15 +886,24 @@ clicks: 5
 
 <div flex flex-col gap-3 mt-6>
 
-<script setup>
-const checkpointTiles = [
-  { title: 'Checkpoints are large', subtitle: 'Llama 2 ≈ 83GB of checkpoint files' },
-  { title: 'Limited IO bandwidth', subtitle: 'Saving 80GB+ checkpoints needs high throughput to minimize downtime' },
-  { title: 'Mitigation is heavy', subtitle: 'Node loss forces 100s of GB transfer to another node' }
-]
-</script>
+<v-clicks>
 
-<VerticalTileGroup :tiles="checkpointTiles" :start-click="3" color-variant="indigo" />
+<div bg="indigo-800/20" border="2 solid indigo-600" rounded-lg flex-1 px-3 py-2>
+  <div><span>Checkpoints are large</span></div>
+  <div text-zinc-400 text-sm><span>LLAMA 2 has roughly 83GB of checkpoint files</span></div>
+</div>
+
+<div bg="indigo-800/20" border="2 solid indigo-600" rounded-lg flex-1 px-3 py-2>
+  <div><span>Limited bandwidth of NFS, shared Volumes, RDMA</span></div>
+  <div text-zinc-400 text-sm><span>Saving 80G and above levels checkpoint files require high speed of IO to reduce the downtime</span></div>
+</div>
+
+<div bg="indigo-800/20" border="2 solid indigo-600" rounded-lg flex-1 px-3 py-2>
+  <div><span>Mitigation requires transferring across nodes</span></div>
+  <div text-zinc-400 text-sm><span>If one of the GPU node went down, hundreds GB of files must be transferred to another node</span></div>
+</div>
+
+</v-clicks>
 
 </div>
 
@@ -957,41 +1096,8 @@ They managed to automate most things...
 
 </div>
 
-<!-- Replaced inline footnotes with a structured resource list for consistency -->
-<script setup>
-const bloomResources = [
-  {
-    title: 'The Technology Behind BLOOM Training',
-    url: 'https://huggingface.co/blog/bloom-megatron-deepspeed',
-    description: 'Engineering deep dive into BigScience BLOOM training stack',
-    icon: 'i-carbon:document-blank',
-    badge: 'blog',
-
-  },
-  {
-    title: 'Training chronicles',
-    url: 'https://github.com/bigscience-workshop/bigscience/blob/master/train/tr11-176B-ml/chronicles.md',
-    description: 'Chronological operational notes for the 176B run',
-    icon: 'i-carbon:notebook',
-    badge: 'repo',
-    meta: ['Chronicles']
-  }
-]
-</script>
-
-<div class="absolute inset-x-0 bottom-4 px-6">
-  <ResourceList
-    :resources="bloomResources"
-    :start-click="9"
-    simple
-    compact
-    :columns="2"
-    :line-clamp="1"
-    index-position="footer"
-    footnote-style
-    number-class="text-[10px] opacity-50"
-    wrapper-class="" />
-</div>
+[^1]: [The Technology Behind BLOOM Training](https://huggingface.co/blog/bloom-megatron-deepspeed)
+[^2]: [Training chronicles](https://github.com/bigscience-workshop/bigscience/blob/master/train/tr11-176B-ml/chronicles.md)
 
 <!--
 We that said, we've understood the issues. Let's take a look at some of the state of the art blogs, tryouts, and researches.
@@ -1170,9 +1276,9 @@ class: flex justify-center items-center gap-20 px40 text-xl
 
 <div mt-20>
 
-<h1 flex items-center text="6lxl!">
+<h1 flex items-center text="6xl!">
   <div i-carbon:microservices-1 mr-3 />
-  <span>Autonomous Operator</span>
+  <span>Kcover</span>
 </h1>
 
 </div>
@@ -1186,6 +1292,7 @@ class: flex justify-center items-center gap-20 px40 text-xl
 </div>
 
 <!--
+
 Since we have spent our time on layering concepts and knowledges, let's see what we have done so far. Here's Kebe to tell you more.
 
 [click] Introducing Kcover.
@@ -1204,15 +1311,87 @@ glowSeed: 230
 
 <div mt-10 />
 
-<IconCard
-  :items="[
-    { title: 'Firewatch of workloads', icon: 'i-carbon:kubernetes-operator', themeColor: 'accent', clickIndex: 1 },
-    { title: 'Enhanced observability', icon: 'i-carbon:ibm-watson-knowledge-studio', themeColor: 'primary', clickIndex: 2 },
-    { title: 'Periodic inspection', icon: 'i-carbon:event-schedule', themeColor: 'secondary', clickIndex: 3 },
-    { title: 'Cascading shutdown', icon: 'i-carbon:exam-mode', themeColor: 'warning', clickIndex: 4 },
-    { title: 'Intelli-migration', icon: 'i-carbon:ibm-watson-openscale', themeColor: 'success', clickIndex: 5 }
-  ]"
-/>
+<div flex items-center gap-4>
+
+<v-clicks>
+  <div
+    :class="$clicks < 1 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid purple-800" bg="purple-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:kubernetes-operator h-20 w-20 />
+    </div>
+    <div bg="purple-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center text-base>
+      <span>Firewatch of workloads</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 2 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid violet-800" bg="violet-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:ibm-watson-knowledge-studio h-20 w-20 />
+    </div>
+    <div bg="violet-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center text-base>
+      <span>Enhanced observability</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 3 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid indigo-800" bg="indigo-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:event-schedule h-20 w-20 />
+    </div>
+    <div bg="indigo-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>Periodic inspection</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 4 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid blue-800" bg="blue-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:exam-mode h-20 w-20 />
+    </div>
+    <div bg="blue-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center text-base>
+      <span>Cascading shutdown</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 5 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid sky-800" bg="sky-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-16 flex items-center justify-center>
+      <div i-carbon:ibm-watson-openscale h-20 w-20 />
+    </div>
+    <div bg="sky-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>Intelli-migration</span>
+    </div>
+  </div>
+</v-clicks>
+
+</div>
 
 <!--
 Let’s dive into the core features of kcover.
@@ -1571,19 +1750,27 @@ Any questions?
 -->
 
 ---
-class: py-10
+layout: swot
+strengths:
+  - Strong brand
+  - Innovative team
+weaknesses:
+  - Limited budget
+  - Small market share
+opportunities:
+  - Growing demand
+  - Strategic partnerships
+threats:
+  - New competitors
+  - Regulatory changes
+titles:
+  strengths: Core Strengths
+  opportunities: Market Opportunities
 ---
 
-# SWOT Analysis
-
-Improving together
-
-<SwotMatrix
-  :strengths="['Strong brand','Innovative team']"
-  :weaknesses="['Limited budget','Small market share']"
-  :opportunities="['Growing demand','Strategic partnerships']"
-  :threats="['New competitors','Regulatory changes']"
-  :reveal="true"
-  :start-click="2"
-  :show-title="false"
-/>
+<!-- Optional: override one section with slot content -->
+::strengths::
+- Strong brand recognition
+- Patented technology
+- Loyal customer base
+::

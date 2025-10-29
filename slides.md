@@ -450,11 +450,263 @@ check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
 
 </SlideContent>
 
+
+
+<SlideContent>
+
+# Clicks Animations
+
+You can add `v-click` to elements to add a click animation.
+
+<div v-click>
+
+This shows up when you click the slide:
+
+```html
+<div v-click>This shows up when you click the slide.</div>
+```
+
+</div>
+
+<br>
+
+<v-click>
+
+The <span v-mark.red="3"><code>v-mark</code> directive</span>
+also allows you to add
+<span v-mark.circle.orange="4">inline marks</span>
+, powered by [Rough Notation](https://roughnotation.com/):
+
+```html
+<span v-mark.underline.orange>inline markers</span>
+```
+
+</v-click>
+
+<div mt-20 v-click>
+
+[Learn more](https://sli.dev/guide/animations#click-animation)
+
+ </div>
+
+</SlideContent>
+
 ---
 
 <SlideContent>
 
 # Clicks Animations
+
+
+You can add `v-click` to elements to add a click animation.
+
+<div v-click>
+
+This shows up when you click the slide:
+
+```html
+<div v-click>This shows up when you click the slide.</div>
+```
+
+</div>
+
+<br>
+
+<v-click>
+
+The <span v-mark.red="3"><code>v-mark</code> directive</span>
+also allows you to add
+<span v-mark.circle.orange="4">inline marks</span>
+, powered by [Rough Notation](https://roughnotation.com/):
+
+```html
+<span v-mark.underline.orange>inline markers</span>
+```
+
+</v-click>
+
+<div mt-20 v-click>
+
+[Learn more](https://sli.dev/guide/animations#click-animation)
+
+ </div>
+
+</SlideContent>
+
+---
+
+<SlideContent>
+
+# Clicks Animations
+
+
+You can add `v-click` to elements to add a click animation.
+
+<div v-click>
+
+This shows up when you click the slide:
+
+```html
+<div v-click>This shows up when you click the slide.</div>
+```
+
+</div>
+
+<br>
+
+<v-click>
+
+The <span v-mark.red="3"><code>v-mark</code> directive</span>
+also allows you to add
+<span v-mark.circle.orange="4">inline marks</span>
+, powered by [Rough Notation](https://roughnotation.com/):
+
+```html
+<span v-mark.underline.orange>inline markers</span>
+```
+
+</v-click>
+
+<div mt-20 v-click>
+
+[Learn more](https://sli.dev/guide/animations#click-animation)
+
+ </div>
+
+</SlideContent>
+
+---
+
+<SlideContent>
+
+# Clicks Animations
+
+
+You can add `v-click` to elements to add a click animation.
+
+<div v-click>
+
+This shows up when you click the slide:
+
+```html
+<div v-click>This shows up when you click the slide.</div>
+```
+
+</div>
+
+<br>
+
+<v-click>
+
+The <span v-mark.red="3"><code>v-mark</code> directive</span>
+also allows you to add
+<span v-mark.circle.orange="4">inline marks</span>
+, powered by [Rough Notation](https://roughnotation.com/):
+
+```html
+<span v-mark.underline.orange>inline markers</span>
+```
+
+</v-click>
+
+<div mt-20 v-click>
+
+[Learn more](https://sli.dev/guide/animations#click-animation)
+
+ </div>
+
+</SlideContent>
+
+---
+
+<SlideContent>
+
+# Clicks Animations
+
+
+You can add `v-click` to elements to add a click animation.
+
+<div v-click>
+
+This shows up when you click the slide:
+
+```html
+<div v-click>This shows up when you click the slide.</div>
+```
+
+</div>
+
+<br>
+
+<v-click>
+
+The <span v-mark.red="3"><code>v-mark</code> directive</span>
+also allows you to add
+<span v-mark.circle.orange="4">inline marks</span>
+, powered by [Rough Notation](https://roughnotation.com/):
+
+```html
+<span v-mark.underline.orange>inline markers</span>
+```
+
+</v-click>
+
+<div mt-20 v-click>
+
+[Learn more](https://sli.dev/guide/animations#click-animation)
+
+ </div>
+
+</SlideContent>
+
+---
+
+<SlideContent>
+
+# Clicks Animations
+
+
+You can add `v-click` to elements to add a click animation.
+
+<div v-click>
+
+This shows up when you click the slide:
+
+```html
+<div v-click>This shows up when you click the slide.</div>
+```
+
+</div>
+
+<br>
+
+<v-click>
+
+The <span v-mark.red="3"><code>v-mark</code> directive</span>
+also allows you to add
+<span v-mark.circle.orange="4">inline marks</span>
+, powered by [Rough Notation](https://roughnotation.com/):
+
+```html
+<span v-mark.underline.orange>inline markers</span>
+```
+
+</v-click>
+
+<div mt-20 v-click>
+
+[Learn more](https://sli.dev/guide/animations#click-animation)
+
+ </div>
+
+</SlideContent>
+
+---
+
+<SlideContent>
+
+# Clicks Animations
+
 
 You can add `v-click` to elements to add a click animation.
 
@@ -714,7 +966,7 @@ Double-click on the draggable elements to edit their positions.
 </v-drag>
 ```
 
-<v-drag pos="647,63,261,_,-15">
+<v-drag pos="682,52,261,_,-15">
   <div text-center text-3xl border border-main rounded>
     Double-click me!
   </div>
@@ -791,5 +1043,424 @@ src: ./pages/mission-vision.md
 ---
 
 ---
+layout: default
+---
+
+# Definitions
+Understanding the Landscape
+
+<SlideContent :padded="false" :bottom-gap="10">
+
+<InfoCardV2 
+  :columns="3"
+  :compact="true"
+  :items="[
+    {
+      title: 'SCADA',
+      themeColor: 'warning',
+      icon: 'i-carbon:industry',
+      description: 'Supervisory Control & Data Acquisition',
+      customContent: `<div class='text-center py-4'>
+        <div class='text-6xl mb-4'>🏭</div>
+        <p class='text-xs opacity-80'>Industrial Control Systems</p>
+      </div>`
+    },
+    {
+      title: 'GSOC',
+      themeColor: 'primary',
+      icon: 'i-carbon:globe',
+      description: 'Global Security Operations Center',
+      customContent: `<div class='text-center py-4'>
+        <div class='text-6xl mb-4'>🌐</div>
+        <p class='text-xs opacity-80'>24/7 Centralized Security Hub</p>
+      </div>`
+    },
+    {
+      title: 'PSIM',
+      themeColor: 'accent',
+      icon: 'i-carbon:star',
+      description: 'Physical Security Information Management',
+      customContent: `<div class='text-center py-4'>
+        <div class='text-6xl mb-4'>⭐</div>
+        <p class='text-xs opacity-80'>Unified Security Interface</p>
+      </div>`
+    },
+    {
+      title: 'VMS',
+      themeColor: 'success',
+      icon: 'i-carbon:video',
+      description: 'Video Management System',
+      customContent: `<div class='text-center py-4'>
+        <div class='text-6xl mb-4'>📹</div>
+        <p class='text-xs opacity-80'>Video Recording & Analytics</p>
+      </div>`
+    },
+    {
+      title: 'PACS',
+      themeColor: 'secondary',
+      icon: 'i-carbon:locked',
+      description: 'Physical Access Control System',
+      customContent: `<div class='text-center py-4'>
+        <div class='text-6xl mb-4'>🔒</div>
+        <p class='text-xs opacity-80'>Door & Entry Management</p>
+      </div>`
+    }
+  ]"
+/>
+
+</SlideContent>
+
+---
+layout: default
+---
+
+# New Product Ideas to Products - PM
+
+<div class="stacked-boxes-container">
+
+
+  <div class="stacked-box box-2" v-click="2">
+    <h3>Emerging Products</h3>
+    <p>Commersialization and Scaling</p>
+  </div>
+    
+  <div class="stacked-box box-3" v-click="3">
+    <h3>Mature Product</h3>
+    <p>Optimization + Market Leadership</p>
+  </div>
+  
+  <div class="stacked-box box-1" v-click="1">
+    <h3>Emerging AI</h3>
+    <p>Ideas to MVP</p>
+  </div>
+  
+  <!-- Curly bracket and Louise label -->
+  <div class="bracket-label" v-click="1">
+    <div class="curly-bracket">}</div>
+    <div class="label-text">Louise</div>
+  </div>
+  
+  <!-- Product Ideas Icon and Arrow -->
+  <div class="product-ideas-section" v-click="4">
+    <div class="product-ideas-icon">
+      <div class="icon-circle">
+        💡
+      </div>
+      <span class="icon-label">New Product Ideas</span>
+    </div>
+    <div class="arrow-to-box">
+      <svg class="arrow-svg" viewBox="0 0 100 20">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#ffffff" opacity="0.8" />
+          </marker>
+        </defs>
+        <line x1="0" y1="10" x2="90" y2="10" stroke="#ffffff" stroke-width="2" marker-end="url(#arrowhead)" opacity="0.8" />
+      </svg>
+    </div>
+  </div>
+ 
+</div>
+
+<style scoped>
+.stacked-boxes-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  margin: 2rem auto;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stacked-box {
+  position: absolute;
+  width: 250px;
+  height: 120px;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.box-1 {
+  top: 260px;
+  left: 350px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(37, 99, 235, 0.85));
+  z-index: 1;
+}
+
+.box-2 {
+  top: 130px;
+  left: 500px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(5, 150, 105, 0.85));
+  z-index: 2;
+}
+
+.box-3 {
+  top: 0px;
+  left: 650px;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.95), rgba(217, 119, 6, 0.85));
+  z-index: 3;
+}
+
+.stacked-box h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stacked-box p {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.stacked-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Curly bracket and label styling */
+.bracket-label {
+  position: absolute;
+  top: 375px;
+  left: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+
+.curly-bracket {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: bold;
+  transform: rotate(90deg) scaleX(1) scaleY(5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 250px;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+.label-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  margin-top: 0px;
+}
+
+/* Product Ideas Icon and Arrow */
+.product-ideas-section {
+  position: absolute;
+  top: 290px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 10;
+}
+
+.product-ideas-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.9), rgba(255, 152, 0, 0.8));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.icon-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-to-box {
+  width: 120px;
+  height: 20px;
+}
+
+.arrow-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.product-ideas-section {
+  animation: slide-in-left 0.6s ease-out;
+}
+
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+</style>
+
+---
+layout: default
+---
+
+<SlideContent>
+
+# Product Management Ownership
+
+<InfoCardV2 
+  :columns="3"
+  :compact="true"
+  :items="[
+    {
+      title: '🤖 Emerging AI',
+      themeColor: 'info',
+      customContent: `<div class='p-4'>
+        <div class='role-item ownership mb-3'>
+          <div class='role-label'>⭐ Ownership:</div>
+          <div class='person-name'>Louise</div>
+        </div>
+        <div class='role-item contributor'>
+          <div class='role-label'>🤝 Contributor:</div>
+          <div class='person-name'>Hao</div>
+        </div>
+      </div>`
+    },
+    {
+      title: '🚀 Emerging Products',
+      themeColor: 'secondary',
+      customContent: `<div class='p-4'>
+        <div class='role-item ownership mb-3'>
+          <div class='role-label'>⭐ Ownership:</div>
+          <div class='person-name'>Hao</div>
+        </div>
+        <div class='role-item contributor'>
+          <div class='role-label'>🤝 Contributor:</div>
+          <div class='person-name'>Louise</div>
+        </div>
+      </div>`
+    },
+    {
+      title: '📈 Products',
+      themeColor: 'primary',
+      customContent: `<div class='p-4'>
+        <div class='role-item ownership mb-3'>
+          <div class='role-label'>⭐ Ownership:</div>
+          <div class='person-name'>Product Management</div>
+        </div>
+        <div class='role-item contributor'>
+          <div class='role-label'>🤝 Contributor:</div>
+          <div class='person-name'>Hao, (Louise if feature to existing product)</div>
+        </div>
+      </div>`
+    }
+  ]"
+/>
+
+</SlideContent>
+
+
+
+<style>
+.role-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid rgba(255, 255, 255, 0.4);
+}
+
+.ownership {
+  border-left-color: #fbbf24;
+}
+
+.contributor {
+  border-left-color: #60a5fa;
+}
+
+.role-label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  min-width: 90px;
+  font-size: 0.85rem;
+}
+
+.person-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+</style>
+
+---
 src: ./pages/2ndslide.md
+---
+
+---
+src: ./pages/motion-detection-slides/01-epics.md
+---
+---
+src: ./pages/motion-detection-slides/02-epic1.md
+---
+---
+src: ./pages/motion-detection-slides/04-epic3.md
+---
+---
+src: ./pages/motion-detection-slides/05-epic4.md
+---
+---
+src: ./pages/motion-detection-slides/06-epic5.md
+---
+---
+src: ./pages/motion-detection-slides/07-epic6.md
+---
+---
+src: ./pages/motion-detection-slides/08-epic7.md
+---
+---
+src: ./pages/motion-detection-slides/09-epic8.md
+---
+---
+src: ./pages/motion-detection-slides/10-checklist.md
+---
+---
+src: ./pages/motion-detection-slides/10a-checklist-core.md
+---
+src: ./pages/motion-detection-slides/10a2-checklist-ux.md
+---
+src: ./pages/motion-detection-slides/10b-checklist-benchmarking.md
+---
+src: ./pages/motion-detection-slides/10c-checklist-performance.md
 ---

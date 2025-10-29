@@ -31,11 +31,6 @@ export default mergeConfigs([
           cn: 'Noto Serif SC',
           hand: 'Playwrite IT Moderna',
         },
-        timeouts: {
-          warning: 8000,
-          failure: 15000
-        },
-        inlineImports: false, // Don't inline imports to avoid blocking
       }),
     ],
   },

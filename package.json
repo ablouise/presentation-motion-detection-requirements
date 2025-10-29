@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "dev": "slidev --open --remote",
+    "dev": "slidev  --open --remote=aienabledalarmmanagerpass",
     "export": "slidev export --with-clicks --per-slide --wait-until none"
   },
   "dependencies": {
@@ -47,7 +47,6 @@
     "typescript": "^5.8.3",
     "unocss": "^66.1.2",
     "vite": "^6.3.5",
-    "vite-plugin-singlefile": "^2.3.0",
     "vue": "^3.5.22"
   }
 }

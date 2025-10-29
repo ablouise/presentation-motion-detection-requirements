@@ -114,76 +114,92 @@ glowSeed: 100
 
 <div mt-6 />
 
-<NeutralCardV2 
-  :items="[
-    {
-      title: 'Dependency Hell',
-      icon: 'i-carbon:warning-alt',
-      iconColor: 'text-amber-300',
-      clickIndex: 1,
-      details: [
-        {
-          title: 'Dependency install overhead',
-          description: 'Python/NodeJS install fails frequently with long waiting'
-        },
-        {
-          title: 'CUDA version drift',
-          description: 'Incompatible versions across environments'
-        },
-        {
-          title: 'Dependency Lifecycle consistency',
-          description: 'From development to training to inference'
-        },
-        {
-          title: 'Tool fragmentation',
-          description: 'pip / uv / conda / nix / pixi'
-        }
-      ]
-    },
-    {
-      title: 'Data Preparation',
-      icon: 'i-carbon:download',
-      iconColor: 'text-blue-300',
-      clickIndex: 2,
-      details: [
-        {
-          title: 'Unattended dataset/model preparation',
-          description: 'Time-consuming & error-prone processes'
-        },
-        {
-          title: 'Disparate sources',
-          description: 'HuggingFace / S3 / NFS / Web'
-        }
-      ]
-    },
-    {
-      title: 'Data Governance',
-      icon: 'i-carbon:data-check',
-      iconColor: 'text-green-300',
-      clickIndex: 3,
-      details: [
-        {
-          title: 'Sharing artifacts',
-          description: 'Across teams and Kubernetes namespaces'
-        },
-        {
-          title: 'Version control & Reproducibility',
-          description: 'Tracking model & environment versions'
-        }
-      ]
-    }
-  ]"
-/>
+<div grid grid-cols-3 gap-3 h-75>
 
-<div v-click="4" mt-6 flex justify-center>
+<v-clicks>
+
+<div border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
+  <div flex items-center bg="white/10" backdrop-blur px-3 py-2 rounded-md>
+    <div i-carbon:warning-alt text-amber-300 text-sm mr-2 />
+    <div font-semibold>
+      Dependency Hell
+    </div>
+  </div>
+  <div px-4 py-3>
+    <div flex flex-col gap-3>
+      <div>
+        <div text-sm font-medium>Dependency install overhead</div>
+        <div text-xs opacity-70>Python/NodeJS install fails frequently with long waiting</div>
+      </div>
+      <div>
+        <div text-sm font-medium>CUDA version drift</div>
+        <div text-xs opacity-70>Incompatible versions across environments</div>
+      </div>
+      <div>
+        <div text-sm font-medium>Dependency Lifecycle consistency</div>
+        <div text-xs opacity-70>From development to training to inference</div>
+      </div>
+      <div>
+        <div text-sm font-medium>Tool fragmentation</div>
+        <div text-xs opacity-70>pip / uv / conda / nix / pixi</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
+  <div flex items-center bg="white/10" backdrop-blur px-3 py-2 rounded-md>
+    <div i-carbon:download text-blue-300 text-sm mr-2 />
+    <div font-semibold>
+      Data Preparation
+    </div>
+  </div>
+  <div px-4 py-3>
+    <div flex flex-col gap-3>
+      <div>
+        <div text-sm font-medium>Unattended dataset/model preparation</div>
+        <div text-xs opacity-70>Time-consuming & error-prone processes</div>
+      </div>
+      <div>
+        <div text-sm font-medium>Disparate sources</div>
+        <div text-xs opacity-70>HuggingFace / S3 / NFS / Web</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div border="2 solid white/5" rounded-lg overflow-hidden bg="white/5" backdrop-blur-sm h-full>
+  <div flex items-center bg="white/10" backdrop-blur px-3 py-2 rounded-md>
+    <div i-carbon:data-check text-green-300 text-sm mr-2 />
+    <div font-semibold>
+      Data Governance
+    </div>
+  </div>
+  <div px-4 py-3>
+    <div flex flex-col gap-3>
+      <div>
+        <div text-sm font-medium>Sharing artifacts</div>
+        <div text-xs opacity-70>Across teams and Kubernetes namespaces</div>
+      </div>
+      <div>
+        <div text-sm font-medium>Version control & Reproducibility</div>
+        <div text-xs opacity-70>Tracking model & environment versions</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</v-clicks>
+
+</div>
+
+<div v-click mt-6 flex justify-center>
   <div
     border="2 solid white/5" bg="white/5" backdrop-blur-sm
-    rounded-lg px-6 py-3 flex items-center gap-3 w-full max-w-240
+    rounded-lg px-6 py-3 flex items-center gap-3
   >
     <div i-carbon:idea text-yellow-300 text-2xl />
-    <span text-lg text-yellow-200>
-      LLM projects face unique infrastructure challenges beyond traditional ML
-    </span>
+    <span text-lg>LLM projects face unique infrastructure challenges beyond traditional ML</span>
   </div>
 </div>
 
@@ -245,58 +261,122 @@ glowSeed: 175
 
 <span>Bridging the divide between model development and production training</span>
 
-<script setup>
-const envGapCards = [
-  {
-    title: 'The Common Pattern',
-    icon: 'i-carbon:warning-alt',
-    themeColor: 'error',
-    clickIndex: 1,
-    features: [
-      '🔧 Development: Preparing new model training datasets',
-      '🤖 Training: Fine-tuning load with transformers lib', 
-      '⚡ Inference: Inference from vLLM with transformers'
-    ],
-    cons: [
-      'Dependency drift',
-      'Repeated downloads', 
-      'No lockfile tracking',
-      'Inconsistent versions'
-    ],
-    customContent: `<div class="mt-2 bg-red-900/30 rounded-lg p-3 text-sm">
-      <div class=\"font-mono text-xs text-zinc-300 bg-black/30 p-2 rounded\">
-        <div>pip install -r requirements.txt</div>
-        <div>python train.py</div>
+<div mt-6 grid grid-cols-2 gap-6>
+  <div
+    v-click
+    border="2 solid red-800" bg="red-800/20"
+    rounded-lg overflow-hidden
+  >
+    <div bg="red-800/40" px-4 py-2 flex items-center>
+      <div i-carbon:warning-alt text-red-300 text-xl mr-2 />
+      <span font-bold>The Common Pattern</span>
+    </div>
+    <div px-4 py-3 flex flex-col gap-2>
+      <div flex items-center gap-2 py-1>
+        <div i-carbon:development text-amber-300 text-xl />
+        <div>
+          <div font-bold>Development</div>
+          <div text-sm opacity-80>Preparing new model training datasets</div>
+        </div>
       </div>
-    </div>`
-  },
-  {
-    title: 'The Dataset Solution',
-    icon: 'i-carbon:cloud-service-management',
-    themeColor: 'success',
-    clickIndex: 2,
-    pros: [
-      'Define once, use everywhere',
-      'Tracked dependencies with lockfiles',
-      'Automatic dependency resolution'
-    ],
-    features: [
-      '📓 Jupyter: No configuration needed',
-      '💻 VSCode: Just click and use',
-      '🔧 All tools: Automatic integration'
-    ],
-    customContent: `<div class=\"text-xs text-center mt-2 text-green-300\">No configuration needed - just click and use!</div>`
-  }
-]
-</script>
+      <div flex items-center gap-2 py-1>
+        <div i-carbon:machine-learning-model text-amber-300 text-xl />
+        <div>
+          <div font-bold>Training</div>
+          <div text-sm opacity-80>Fine-tuning load with transformers lib</div>
+        </div>
+      </div>
+      <div flex items-center gap-2 py-1>
+        <div i-carbon:area-custom text-amber-300 text-xl />
+        <div>
+          <div font-bold>Inference</div>
+          <div text-sm opacity-80>Inference from vLLM with transformers </div>
+        </div>
+      </div>
+      <div mt-2 bg="red-900/30" rounded-lg p-3 text-sm>
+        <div font-mono text-xs text-zinc-300 bg="black/30" p-2 rounded>
+          <div>pip install -r requirements.txt</div>
+          <div>python train.py</div>
+        </div>
+        <div mt-2 grid grid-cols-2 gap-2>
+          <div flex items-center gap-1 text-xs>
+            <div i-carbon:close text-red-400 />
+            <span>Dependency drift</span>
+          </div>
+          <div flex items-center gap-1 text-xs>
+            <div i-carbon:close text-red-400 />
+            <span>Repeated downloads</span>
+          </div>
+          <div flex items-center gap-1 text-xs>
+            <div i-carbon:close text-red-400 />
+            <span>No lockfile tracking</span>
+          </div>
+          <div flex items-center gap-1 text-xs>
+            <div i-carbon:close text-red-400 />
+            <span>Inconsistent versions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<SlideContent :padded="false" bottomBorder>
-  <InfoCardV2 
-    :items="envGapCards"
-    :columns="2"
-    use-theme-colors
-  />
-</SlideContent>
+  <div
+    v-click
+    border="2 solid green-800" bg="green-800/20"
+    rounded-lg overflow-hidden
+  >
+    <div bg="green-800/40" px-4 py-2 flex items-center>
+      <div i-carbon:cloud-service-management text-green-300 text-xl mr-2 />
+      <span font-bold>The Dataset Solution</span>
+    </div>
+    <div px-4 py-3 flex flex-col gap-2 h-full>
+      <div bg="green-900/30" rounded-lg p-3 flex flex-col gap-2>
+        <div font-bold text-sm>Single Environment, Multiple Contexts</div>
+        <div flex items-center gap-2>
+          <div i-carbon:checkmark-outline text-green-400 />
+          <span text-sm>Define once, use everywhere</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:checkmark-outline text-green-400 />
+          <span text-sm>Tracked dependencies with lockfiles</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:checkmark-outline text-green-400 />
+          <span text-sm>Automatic dependency resolution</span>
+        </div>
+      </div>
+      <div bg="green-900/30" rounded-lg p-3 mt-1 h-44>
+        <div font-bold text-sm mb-2>Automatic Tool Integration</div>
+        <div grid grid-cols-2 gap-2 h-24>
+          <div flex items-center justify-center gap-2 bg="black/20" rounded p-2>
+            <div i-logos:jupyter text-xl min-w-7 />
+            <div text-xs>
+              <div font-bold>Jupyter</div>
+            </div>
+          </div>
+          <div flex items-center justify-center gap-2 bg="black/20" rounded p-2>
+            <div i-logos:visual-studio-code text-xl min-w-7 />
+            <div text-xs>
+              <div font-bold>VSCode</div>
+            </div>
+          </div>
+        </div>
+        <div text-xs text-center mt-2 text-green-300>No configuration needed - just click and use!</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+After你勤奋工作,  you've tidy the python libs in 开发环境,
+[click] But when shift   开发 -> 训练 , then 推理 stage
+当切换环境， 不仅 wasting | reinstall  ,
+the worst nightmare is dep relationship breaks, from here to there.
+
+[click] So , we DO need a solution : define once ,  consistent from end to end, and reusable, unattended , and well integrated with Jupyter ,vscode.
+
+Ok, Neko, Can you  shed some light  for us?
+-->
 
 ---
 clicks: 3
@@ -332,7 +412,6 @@ Dependency Hell Emerges
 ---
 class: py-10
 glowSeed: 123
-clicks: 5
 ---
 
 # The Silent Saboteurs
@@ -343,49 +422,90 @@ clicks: 5
 
 <div flex items-center gap-4>
 
-<IconCard 
-  :items="[
-    {
-      title: 'ABI Incompatibility',
-      icon: 'i-carbon:cics-program',
-      themeColor: 'warning',
-      clickIndex: 1
-    },
-    {
-      title: 'CUDA Version Conflicts',
-      icon: 'i-bi:gpu-card',
-      themeColor: 'success',
-      clickIndex: 2
-    },
-    {
-      title: 'System Library Conflicts',
-      icon: 'i-carbon:terminal',
-      themeColor: 'primary',
-      clickIndex: 3
-    },
-    {
-      title: 'Package Inconsistencies',
-      icon: 'i-carbon:row-delete',
-      themeColor: 'info',
-      clickIndex: 4
-    }
-  ]"
-/>
+<v-clicks>
+  <div
+    :class="$clicks < 1 ? 'translate-x--20 opacity-0' : 'translate-x-0 opacity-100'"
+    rounded-lg
+    border="2 solid yellow-800" bg="yellow-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-2 py-12 flex items-center justify-center>
+      <div i-carbon:cics-program text-yellow-300 h-20 w-20 />
+    </div>
+    <div bg="yellow-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>ABI Incompatibility</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 2 ? 'translate-x--20 opacity-0' : 'translate-x-0 opacity-100'"
+    rounded-lg
+    border="2 solid lime-800" bg="lime-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-2 py-12 flex items-center justify-center>
+      <div i-bi:gpu-card text-lime-300 h-20 w-20 />
+    </div>
+    <div bg="lime-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>CUDA Version Conflicts</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 3 ? 'translate-x--20 opacity-0' : 'translate-x-0 opacity-100'"
+    rounded-lg
+    border="2 solid emerald-800" bg="emerald-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-2 py-12 flex items-center justify-center>
+      <div i-carbon:terminal text-emerald-300 h-20 w-20 />
+    </div>
+    <div bg="emerald-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>System Library Conflicts</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 4 ? 'translate-x--20 opacity-0' : 'translate-x-0 opacity-100'"
+    rounded-lg
+    border="2 solid sky-800" bg="sky-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-2 py-12 flex items-center justify-center>
+      <div i-carbon:row-delete text-sky-300 h-20 w-20 />
+    </div>
+    <div bg="sky-800/30" w-full px-4 py-2 h="5rem" flex items-center justify-center text-center>
+      <span>Package Inconsistencies</span>
+    </div>
+  </div>
+</v-clicks>
 
 </div>
 
-<ImpactCallout
-  :click-index="5"
-  class="mt-4"
-  title="Real World Impact"
-  icon="i-carbon:warning-alt"
-  themeColor="error"
-  :items="[
-    { icon: 'i-carbon:time', text: 'Hours wasted reinstalling CUDA' },
-    { icon: 'i-carbon:chart-evaluation', text: 'Inconsistent model results' },
-    { icon: 'i-carbon:cloud-service-management', text: 'Broken production deployments' }
-  ]"
-/>
+<div v-click flex flex-col mt-4 bg="red-800/20" border="2 solid red-800/50" rounded-lg>
+  <div bg="red-800/30" px-4 py-2 text-red-200 flex items-center>
+    <div i-carbon:warning-alt mr-2 /> Real World Impact
+  </div>
+  <div flex justify-between px-6 py-4 text-sm>
+    <div flex items-center gap-2>
+      <div i-carbon:time text-red-300 text-xl />
+      <span>Hours wasted reinstalling CUDA</span>
+    </div>
+    <div flex items-center gap-2>
+      <div i-carbon:chart-evaluation text-red-300 text-xl />
+      <span>Inconsistent model results</span>
+    </div>
+    <div flex items-center gap-2>
+      <div i-carbon:cloud-service-management text-red-300 text-xl />
+      <span>Broken production deployments</span>
+    </div>
+  </div>
+</div>
 
 ---
 class: py-10
@@ -534,39 +654,42 @@ layout: center
 
 # CUDA Conundrum: The Version Wars
 
-<TileGroup
-  :items="[
-    { title: 'Version 11.6', subtitle: 'Legacy Model', status: 'Required by older frameworks', statusTone: 'error', emoji: '🎯', clickIndex: 1 },
-    { title: 'Version 11.8', subtitle: `PyTorch's Choice`, status: 'Optimized for current models', statusTone: 'success', emoji: '🎯', clickIndex: 2 },
-    { title: 'Version 12.1', subtitle: 'System Default', status: 'Newest features, compatibility issues', statusTone: 'warning', emoji: '🎯', clickIndex: 3 }
-  ]"
-  :columns="3"
-  gap="gap-2 mt-6"
-/>
+<div class="grid grid-cols-3 gap-2 mt-6">
+  <div v-click class="flex flex-col items-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6">
+    <div class="text-4xl mb-4">🎯</div>
+    <h3>Version 11.6</h3>
+    <p class="text-sm opacity-70">Legacy Model</p>
+    <p class="text-xs mt-2 text-red-300">Required by older frameworks</p>
+  </div>
+  <div v-click class="flex flex-col items-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6">
+    <div class="text-4xl mb-4">🎯</div>
+    <h3>Version 11.8</h3>
+    <p class="text-sm opacity-70">PyTorch's Choice</p>
+    <p class="text-xs mt-2 text-green-300">Optimized for current models</p>
+  </div>
+  <div v-click class="flex flex-col items-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6">
+    <div class="text-4xl mb-4">🎯</div>
+    <h3>Version 12.1</h3>
+    <p class="text-sm opacity-70">System Default</p>
+    <p class="text-xs mt-2 text-yellow-300">Newest features, compatibility issues</p>
+  </div>
+</div>
 
-<TileGroup
-  v-click="4"
-  :items="[
-    {
-      title: 'CUDA Complexity',
-      bullets: [
-        'Driver vs Runtime version mismatch',
-        'cuDNN compatibility matrix',
-        'NCCL version requirements'
-      ],
-      align: 'left'
-    },
-    {
-      title: 'The Silent Killer',
-      body: 'Often fails with cryptic errors or worse — <strong>silent numerical errors</strong> in your models',
-      bodyClass: 'text-red-300',
-      align: 'left'
-    }
-  ]"
-  :columns="2"
-  gap="gap-2 mt-2"
-  dense
-/>
+<div v-click class="mt-2 grid grid-cols-2 gap-2">
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4">
+    <h3 class="mb-2">CUDA Complexity</h3>
+    <ul class="space-y-1 text-sm">
+      <li>• Driver vs Runtime version mismatch</li>
+      <li>• cuDNN compatibility matrix</li>
+      <li>• NCCL version requirements</li>
+    </ul>
+  </div>
+
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4">
+    <h3 class="mb-2">The Silent Killer</h3>
+    <p class="text-sm text-red-400">Often fails with cryptic errors or worse - <span class="font-bold">silent numerical errors</span> in your models</p>
+  </div>
+</div>
 
 ---
 class: py-10
@@ -706,53 +829,124 @@ glowSeed: 350
 
 <div mt-6 />
 
-<InfoCardV2
-  :items="[
-    {
-      title: 'Traditional Workflow',
-      icon: 'i-carbon:warning-alt',
-      semanticType: 'error',
-      clickIndex: 1,
-      cons: [
-        'Different setups across team',
-        'Hours reinstalling CUDA',
-        'Notebook vs. production mismatch',
-        'Works locally, fails in prod'
-      ],
-      revealMode: 'progressive',
-      revealStart: 2
-    },
-    {
-      title: 'Reusable Environments',
-      icon: 'i-carbon:ai-status-in-progress',
-      semanticType: 'success',
-      clickIndex: 6,
-      pros: [
-        'One environment definition, everywhere',
-        'Install once, mount instantly',
-        'Identical experience for all team members',
-        'Seamless dev-to-prod workflow'
-      ]
-    }
-  ]"
-  :columns="2"
-/>
+<div grid grid-cols-2 gap-6>
+  <div
+    v-click="1"
+    border="2 solid red-800" bg="red-800/20"
+    rounded-lg overflow-hidden
+    transition duration-500 ease-in-out
+    :class="$clicks < 1 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'"
+  >
+    <div bg="red-800/40" px-4 py-2 flex items-center>
+      <div i-carbon:warning-alt text-red-300 text-xl mr-2 />
+      <span font-bold>Traditional Workflow</span>
+    </div>
+    <div px-5 py-4 flex flex-col gap-2>
+      <div
+        v-for="(item, idx) in [
+          'Different setups across team',
+          'Hours reinstalling CUDA',
+          'Notebook vs. production mismatch',
+          'Works locally, fails in prod'
+        ]"
+        :key="item"
+        v-click="2 + idx"
+        flex items-center gap-2
+        :class="$clicks < (2 + idx) ? 'opacity-0 translate-x--10' : 'opacity-100 translate-x-0'"
+        transition duration-300 ease-in-out
+      >
+        <div i-carbon:close-filled text-red-400 />
+        <span>{{item}}</span>
+      </div>
+    </div>
+  </div>
 
-<TimeComparisonPanel
-  :click-index="7"
-  :before="{
-    label: 'Without Reusable Environments',
-    time: '4-6 Hours',
-    subtitle: 'Per developer, per environment setup',
-    bullets: ['Manual CUDA installation','System library conflicts','Disk space duplication']
-  }"
-  :after="{
-    label: 'With Reusable Environments',
-    time: '30 Seconds',
-    subtitle: 'Just mount the shared environment',
-    bullets: ['Pre-built environments','Consistent across team','Efficient storage usage']
-  }"
-/>
+  <div
+    v-click="6"
+    border="2 solid lime-800" bg="lime-800/20"
+    rounded-lg overflow-hidden
+    transition duration-500 ease-in-out
+    :class="$clicks < 6 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'"
+  >
+    <div bg="lime-800/40" px-4 py-2 flex items-center>
+      <div i-carbon:ai-status-in-progress text-lime-300 text-xl mr-2 />
+      <span font-bold>Reusable Environments</span>
+    </div>
+    <div px-5 py-4 flex flex-col gap-2>
+      <div
+        v-for="item in [
+          'One environment definition, everywhere',
+          'Install once, mount instantly',
+          'Identical experience for all team members',
+          'Seamless dev-to-prod workflow'
+        ]"carbon:help-filled
+        :key="item"
+        flex items-center gap-2
+      >
+        <div i-carbon:help-filled text-lime-400 />
+        <span>{{item}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div v-click="7" mt-6>
+  <div flex items-center justify-center>
+    <div
+      transition duration-500 ease-in-out
+      relative flex bg="neutral-800/50" border="2 solid neutral-600" rounded-xl p-2 gap-2 max-w-180
+    >
+      <div w-80 bg="red-900/30" rounded-lg p-3 relative>
+        <div absolute top--3 left-3 bg="red-700" text-xs px-2 py-0.5 rounded-full>Without Reusable Environments</div>
+        <div flex items-center gap-2 text-xl>
+          <div i-carbon:time text-red-300 />
+          <span font-bold>4-6 Hours</span>
+        </div>
+        <div text-sm mt-2 opacity-70>
+          Per developer, per environment setup
+        </div>
+        <div flex flex-col gap-1 mt-4>
+          <div flex items-center text-xs gap-1>
+            <div i-carbon:close-filled text-red-400 text-sm />
+            <span>Manual CUDA installation</span>
+          </div>
+          <div flex items-center text-xs gap-1>
+            <div i-carbon:close-filled text-red-400 text-sm />
+            <span>System library conflicts</span>
+          </div>
+          <div flex items-center text-xs gap-1>
+            <div i-carbon:close-filled text-red-400 text-sm />
+            <span>Disk space duplication</span>
+          </div>
+        </div>
+      </div>
+      <div w-80 bg="white/5" rounded-lg p-3 relative>
+        <div absolute top--3 left-3 bg="white/50" text-xs px-2 py-0.5 rounded-full>With Reusable Environments</div>
+        <div flex items-center gap-2 text-xl>
+          <div i-carbon:time text-white  />
+          <span font-bold>30 Seconds</span>
+        </div>
+        <div text-sm mt-2 opacity-70>
+          Just mount the shared environment
+        </div>
+        <div flex flex-col gap-1 mt-4>
+          <div flex items-center text-xs gap-1>
+            <div i-carbon:help-filled text-white text-sm />
+            <span>Pre-built environments</span>
+          </div>
+          <div flex items-center text-xs gap-1>
+            <div i-carbon:help-filled text-white text-sm />
+            <span>Consistent across team</span>
+          </div>
+          <div flex items-center text-xs gap-1>
+            <div i-carbon:help-filled text-white text-sm />
+            <span>Efficient storage usage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ---
 class: py-10
@@ -762,49 +956,105 @@ glow: left
 
 # The Usual Suspects: Tools We've Tried
 
-What works, what doesn't, and why
+<span>What works, what doesn't, and why</span>
 
-<SlideContent :wrapper-style="{ maxHeight: 'calc(100vh - 140px)' }">
 <div mt-4 />
 
-<div 
-  v-motion
-  :initial="{ opacity: 0, y: 40 }"
-  :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
->
-  <InfoCardV2 
-    :items="[
-      {
-        title: 'pip & uv',
-        themeColor: 'warning',
-        icon: 'i-logos:python',
-        clickIndex: 1,
-        description: 'Python package managers for dependency installation',
-        pros: ['Fast for Python packages'],
-        cons: ['Blind to C++/CUDA deps', 'No system library management', 'Version conflicts common']
-      },
-      {
-        title: 'Docker', 
-        themeColor: 'info',
-        icon: 'i-devicon:docker',
-        clickIndex: 2,
-        description: 'Containerization platform for consistent environments',
-        pros: ['Reproducible environments'],
-        cons: ['Massive image sizes (5-10GB)', 'Slow build times (30+ min)', 'Resource intensive']
-      },
-      {
-        title: 'Nix',
-        themeColor: 'primary', 
-        icon: 'i-devicon:nixos',
-        clickIndex: 3,
-        description: 'Functional package manager with reproducible builds',
-        pros: ['Complete reproducibility'],
-        cons: ['PhD-level learning curve', 'Complex configuration', 'K8s integration challenges']
-      }
-    ]"
-    :dim-click-count="5"
-    use-theme-colors
-  />
+<div flex justify-center>
+  <div
+    v-motion
+    :initial="{ opacity: 0, y: 40 }"
+    :enter="{ opacity: 1, y: 0, transition: { duration: 600 } }"
+    grid grid-cols-3 gap-4 w-full text-sm
+  >
+    <div
+      v-click="1"
+      border="2 solid yellow-800" bg="yellow-800/20"
+      rounded-lg overflow-hidden transition-all duration-500
+      :class="$clicks === 5 ? 'opacity-40' : ''"
+    >
+      <div bg="yellow-800/40" px-4 py-3 flex items-center>
+        <div i-logos:python text-3xl mr-3 />
+        <span font-bold>pip & uv</span>
+      </div>
+      <div px-4 py-3 flex flex-col gap-2>
+        <div flex items-center gap-2>
+          <div i-carbon:checkmark-outline text-green-400 />
+          <span>Fast for Python packages</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>Blind to C++/CUDA deps</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>No system library management</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>Version conflicts common</span>
+        </div>
+      </div>
+    </div>
+    <div
+      v-click="2"
+      border="2 solid cyan-800" bg="cyan-800/20"
+      rounded-lg overflow-hidden transition-all duration-500
+      :class="$clicks === 5 ? 'opacity-40' : ''"
+    >
+      <div bg="cyan-800/40" px-4 py-3 flex items-center>
+        <div i-devicon:docker text-3xl mr-3 />
+        <span font-bold>Docker</span>
+      </div>
+      <div px-4 py-3 flex flex-col gap-2>
+        <div flex items-center gap-2>
+          <div i-carbon:checkmark-outline text-green-400 />
+          <span>Reproducible environments</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>Massive image sizes (5-10GB)</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>Slow build times (30+ min)</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>Resource intensive</span>
+        </div>
+      </div>
+    </div>
+    <div
+      v-click="3"
+      border="2 solid blue-800" bg="blue-800/20"
+      rounded-lg overflow-hidden transition-all duration-500
+      :class="$clicks === 5 ? 'opacity-40' : ''"
+    >
+      <div bg="blue-800/40" px-4 py-3 flex items-center>
+        <div i-devicon:nixos text-3xl mr-3 />
+        <span font-bold>Nix</span>
+      </div>
+      <div px-4 py-3 flex flex-col gap-2>
+        <div flex items-center gap-2>
+          <div i-carbon:checkmark-outline text-green-400 />
+          <span>Complete reproducibility</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>PhD-level learning curve</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>Complex configuration</span>
+        </div>
+        <div flex items-center gap-2>
+          <div i-carbon:close text-red-400 />
+          <span>K8s integration challenges</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div
@@ -849,7 +1099,6 @@ What works, what doesn't, and why
     </div>
   </div>
 </div>
-</SlideContent>
 
 ---
 glowSeed: 12129
@@ -890,10 +1139,12 @@ Python + C++ Harmony in K8S
 
 One CRD to Rule Them All
 
-<div class="flex relative items-start">
-  <div class="mt-2 w-70%">
-    <DatasetSpecBlock>
-      '''yaml 
+<div class="flex relative">
+
+<div class="mt-2 w-75%">
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg pl-1 pr-1">
+
+```yaml
 apiVersion: dataset.baizeai.io/v1alpha1
 kind: Dataset
 metadata:
@@ -918,24 +1169,24 @@ spec:
         torch
         torchaudio
         torchvision
-    </DatasetSpecBlock>
+```
+
   </div>
-  <div class="absolute right-0 top-20 w-27%" v-click="2">
-    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4 flex flex-col gap-3 text-sm">
-      <div class="text-lg font-semibold text-theme-accent flex items-center gap-2">
-        <div class="i-carbon:list"></div>
-        <span>Key Features</span>
-      </div>
-      <ul class="space-y-2 leading-snug">
-        <li class="flex items-start gap-2"><div class="i-carbon:checkmark-outline text-green-400 mt-0.5" />Multi-source (<code>conda</code>, <code>huggingface</code>)</li>
-        <li class="flex items-start gap-2"><div class="i-carbon:checkmark-outline text-green-400 mt-0.5" />Enterprise model & dataset hub</li>
-        <li class="flex items-start gap-2"><div class="i-carbon:checkmark-outline text-green-400 mt-0.5" />Pre-loaded curated assets</li>
-        <li class="flex items-start gap-2"><div class="i-carbon:checkmark-outline text-green-400 mt-0.5" />Install once, mount everywhere</li>
-        <li class="flex items-start gap-2"><div class="i-carbon:checkmark-outline text-green-400 mt-0.5" />Secure credential management</li>
-      </ul>
-      <div class="text-[11px] opacity-60 mt-1">Declarative, reproducible ML environments</div>
-    </div>
+</div>
+
+<div v-click class="absolute right-0 top-25">
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4">
+    <div text-xl text-neutral-300>Key Features</div>
+    <ul class="mt-4">
+      <li>• Multi-source support (<code>conda</code>, <code>huggingface</code>)</li>
+      <li>• Self-contained enterprise model hub</li>
+      <li>• Pre-loaded datasets and models</li>
+      <li>• Install once, use everywhere</li>
+      <li>• Secure credential management</li>
+    </ul>
   </div>
+</div>
+
 </div>
 
 ---
@@ -949,36 +1200,83 @@ glowSeed: 125
 
 <div mt-6 />
 
-<CodeComparisonCard 
-  :items="[
-    {
-      title: 'Docker Approach',
-      icon: 'i-devicon:docker',
-      themeColor: 'info',
-      clickIndex: 1,
-      flex: 'flex-1',
-      codeBlock: '# Need to add a dependency? Rebuild the entire image\nFROM nvidia/cuda:11.8.0-base-ubuntu22.04\nRUN apt-get update && apt-get install -y python3-pip\nCOPY requirements.txt .\nRUN pip install -r requirements.txt\nCOPY . .\n# Immutable after build - can\'t easily modify',
-      highlights: [
-        { text: '30+ minutes to rebuild for one new package', icon: 'i-carbon:time', type: 'negative' },
-        { text: 'Read-only runtime limits dynamic ML tools', icon: 'i-carbon:locked', type: 'negative' },
-        { text: 'One container = one environment', icon: 'i-carbon:airport-location', type: 'negative' }
-      ]
-    },
-    {
-      title: 'Dataset CRD Approach',
-      icon: 'i-carbon:data-volume',
-      themeColor: 'success',
-      clickIndex: 2,
-      flex: 'flex-1',
-      codeBlock: '# Mount pre-built environments as needed\nvolumes:\n- name: pytorch-env\n  persistentVolumeClaim:\n    claimName: pytorch-2.1-env\n# Need another env? Just mount another PVC\n- name: pytorch-nightly-env\n  persistentVolumeClaim:\n    claimName: pytorch-nightly-env',
-      highlights: [
-        { text: 'Add packages on-the-fly in seconds', icon: 'i-carbon:checkmark-outline', type: 'positive' },
-        { text: 'Writeable PVCs support all ML workflows', icon: 'i-carbon:checkmark-outline', type: 'positive' },
-        { text: 'Switch multiple environments simultaneously', icon: 'i-carbon:checkmark-outline', type: 'positive' }
-      ]
-    }
-  ]"
-/>
+<div flex gap-2>
+  <div v-click flex-1>
+    <div
+      border="2 solid cyan-800" bg="cyan-800/20"
+      rounded-lg overflow-hidden
+    >
+      <div bg="cyan-800/40" px-4 py-2 flex items-center>
+        <div i-devicon:docker text-xl mr-2 />
+        <span font-bold>Docker Approach</span>
+      </div>
+      <div px-4 py-3>
+        <div font-mono text-xs bg="black/30" rounded-lg p-2>
+          <div># Need to add a dependency? Rebuild the entire image</div>
+          <div class="text-cyan-400">FROM nvidia/cuda:11.8.0-base-ubuntu22.04</div>
+          <div>RUN apt-get update && apt-get install -y python3-pip</div>
+          <div>COPY requirements.txt .</div>
+          <div>RUN pip install -r requirements.txt</div>
+          <div>COPY . .</div>
+          <div class="text-red-400"># Immutable after build - can't easily modify</div>
+        </div>
+        <div mt-3 bg="red-900/30" rounded-lg p-3 flex flex-col gap-2>
+          <div flex items-center gap-2>
+            <div i-carbon:time text-red-300 />
+            <span text-sm>30+ minutes to rebuild for one new package</span>
+          </div>
+          <div flex items-center gap-2>
+            <div i-carbon:locked text-red-300 />
+            <span text-sm>Read-only runtime limits dynamic ML tools</span>
+          </div>
+          <div flex items-center gap-2>
+            <div i-carbon:airport-location text-red-300 />
+            <span text-sm>One container = one environment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div v-click flex-1 pl-4>
+    <div
+      border="2 solid green-800" bg="green-800/20"
+      rounded-lg overflow-hidden
+    >
+      <div bg="green-800/40" px-4 py-2 flex items-center>
+        <div i-carbon:data-volume text-green-300 text-xl mr-2 />
+        <span font-bold>Dataset CRD Approach</span>
+      </div>
+      <div px-4 py-3>
+        <div font-mono text-xs bg="black/30" rounded-lg p-2>
+          <div class="text-green-400"># Mount pre-built environments as needed</div>
+          <div>volumes:</div>
+          <div>- name: pytorch-env</div>
+          <div>  persistentVolumeClaim:</div>
+          <div>    claimName: pytorch-2.1-env</div>
+          <div class="text-green-400"># Need another env? Just mount another PVC</div>
+          <div>- name: pytorch-nightly-env</div>
+          <div>  persistentVolumeClaim:</div>
+          <div>    claimName: pytorch-nightly-env</div>
+        </div>
+        <div mt-3 bg="green-900/30" rounded-lg p-3 flex flex-col gap-2>
+          <div flex items-center gap-2>
+            <div i-carbon:checkmark-outline text-green-400 />
+            <span text-sm>Add packages on-the-fly in seconds</span>
+          </div>
+          <div flex items-center gap-2>
+            <div i-carbon:checkmark-outline text-green-400 />
+            <span text-sm>Writeable PVCs support all ML workflows</span>
+          </div>
+          <div flex items-center gap-2>
+            <div i-carbon:checkmark-outline text-green-400 />
+            <span text-sm>Switch multiple environments simultaneously</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ---
 class: py-10
@@ -1043,11 +1341,11 @@ class: py-4
 glowSeed: 310
 ---
 
-<!-- (Removed dynamic envTools script; using original static layout) -->
-
 <div mt-6 />
 
-<DatasetSpecBlock>
+<div class="mt-2 w-75%">
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg pl-1 pr-1">
+
 ```yaml
 apiVersion: dataset.baizeai.io/v1alpha1
 kind: Dataset
@@ -1074,7 +1372,9 @@ spec:
         torchaudio
         torchvision
 ```
-</DatasetSpecBlock>
+
+  </div>
+</div>
 
 <div v-click class="absolute right-18 top-25">
   <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2">
@@ -1181,6 +1481,626 @@ but now I want to highlight something really important - we support multiple pac
 [click] Besides conda, we can also integrate well with pixi and pip only. Or if you prefer, use Mamba which is 10x faster than traditional conda.
 
 The key is flexibility - use whatever works best for your workflow. We handle all the complexity behind the scenes, making sure everything plays nicely together.
+-->
+
+---
+class: py-10
+glowSeed: 150
+---
+
+# Intelligent Dependency Approach
+
+<div flex justify-between items-center>
+  <span w="1/2">Optimizing the unbearable heaviness of builds</span>
+  <div i-carbon:cache text-7xl />
+</div>
+
+<div mt-6 grid grid-cols-3 gap-4>
+  <div
+    v-click
+    border="2 solid indigo-800" bg="indigo-800/20"
+    rounded-lg overflow-hidden
+  >
+    <div bg="indigo-800/40" px-4 py-2 flex items-center justify-center>
+      <div i-carbon:archive text-indigo-300 text-xl mr-2 />
+      <span font-bold>1: Fetching</span>
+    </div>
+    <div px-3 py-3 flex flex-col gap-1>
+      <div text-sm opacity-80>Source packages & archives</div>
+      <div flex items-center gap-1 text-xs>
+        <div i-carbon:checkmark-outline text-green-400 />
+        <span>Mirror for Conda & pip</span>
+      </div>
+      <div flex items-center gap-1 text-xs>
+        <div i-carbon:checkmark-outline text-green-400 />
+        <span>Auto merge config & requirements.txt</span>
+      </div>
+    </div>
+  </div>
+
+  <div
+    v-click
+    border="2 solid purple-800" bg="purple-800/20"
+    rounded-lg overflow-hidden
+  >
+    <div bg="purple-800/40" px-4 py-2 flex items-center justify-center>
+      <div i-carbon:assembly-cluster text-purple-300 text-xl mr-2 />
+      <span font-bold>2: Install & Build</span>
+    </div>
+    <div px-3 py-3 flex flex-col gap-1>
+      <div text-sm opacity-80>Compiled binaries & wheels</div>
+      <div flex items-center gap-1 text-xs>
+        <div i-carbon:checkmark-outline text-green-400 />
+        <span>Existing cache used</span>
+      </div>
+      <div flex items-center gap-1 text-xs>
+        <div i-carbon:checkmark-outline text-green-400 />
+        <span>No duplicated installation</span>
+      </div>
+    </div>
+  </div>
+
+  <div
+    v-click
+    border="2 solid pink-800" bg="pink-800/20"
+    rounded-lg overflow-hidden
+  >
+    <div bg="pink-800/40" px-4 py-2 flex items-center justify-center>
+      <div i-carbon:data-class text-pink-300 text-xl mr-2 />
+      <span font-bold>3: Persist & Activate</span>
+    </div>
+    <div px-3 py-3 flex flex-col gap-1>
+      <div text-sm opacity-80>Environment configs</div>
+      <div flex items-center gap-1 text-xs>
+        <div i-carbon:checkmark-outline text-green-400 />
+        <span>Auto discovery for Notebooks</span>
+      </div>
+      <div flex items-center gap-1 text-xs>
+        <div i-carbon:checkmark-outline text-green-400 />
+        <span>Auto activate</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div v-click mt-4 grid grid-cols-2 gap-4>
+  <div bg="red-800/20" rounded-lg overflow-hidden>
+    <div bg="red-800/40" px-4 py-2 flex items-center>
+      <div i-carbon:time text-red-300 text-xl mr-2 />
+      <span font-bold>Traditional Approach</span>
+    </div>
+    <div px-4 py-3 flex flex-col gap-1>
+      <div flex items-center justify-between>
+        <div>CUDA setup:</div>
+        <div text-red-400 font-bold>45-60 min</div>
+      </div>
+      <div flex items-center justify-between>
+        <div>PyTorch install:</div>
+        <div text-red-400 font-bold>20-30 min</div>
+      </div>
+    </div>
+  </div>
+
+  <div bg="green-800/20" rounded-lg overflow-hidden>
+    <div bg="green-800/40" px-4 py-2 flex items-center>
+      <div i-carbon:time text-green-300 text-xl mr-2 />
+      <span font-bold>With Datasets</span>
+    </div>
+    <div px-4 py-3 flex flex-col gap-1>
+      <div flex items-center justify-between>
+        <div>First setup:</div>
+        <div text-green-400 font-bold>10-15 min</div>
+      </div>
+      <div flex items-center justify-between>
+        <div>Subsequent use:</div>
+        <div text-green-400 font-bold flex items-center>
+          <span>seconds</span>
+          <div i-carbon:flash animate-pulse ml-1 />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+Now let's talk about our intelligent dependency approach. Building these environments can be heavy - I mean, compiling PyTorch with CUDA? That's not trivial!
+
+We use a three-layer caching approach.
+[click] First, we downloads all those source packages, with SHA verification and mirror fallback for reliability.
+
+[click] Second, we build and compiled binaries and wheels. This is huge because compilation is where most time is spent. We deduplicate at the file level, so if two environments share libraries, we only store them once.
+
+[click] Third, we can auto create metadata - environment configs, dependency resolution results. This allows you to use the environment we created in Dataset directly when you open your Notebook, without having to execute specified commands to activate it. It was a wonderful experience!
+
+[click] Look at the time difference! Traditional CUDA setup takes 45-60 minutes. PyTorch another 20-30. With our solution? First setup is 10-15 minutes, and after that? Seconds! Just seconds to spin up a complete ML environment. That's the power of intelligent dependency approach!
+-->
+
+---
+class: py-4
+glowSeed: 275
+---
+
+<div mt-6 />
+
+<div class="mt-2 w-75%">
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg pl-1 pr-1">
+
+```yaml
+apiVersion: dataset.baizeai.io/v1alpha1
+kind: Dataset
+metadata:
+  name: qwen3-32b
+spec:
+  dataSyncRound: 1
+  secretRef: dataset-hf-qwen3-32b-secret
+  source:
+    options:
+      endpoint: https://hf-mirror.com
+      repoType: MODEL
+    type: HUGGING_FACE
+    uri: huggingface://Qwen/Qwen3-32B
+  volumeClaimTemplate:
+    metadata: {}
+    spec:
+      accessModes:
+        - ReadWriteMany
+      resources:
+        requests:
+          storage: '0'
+      storageClassName: juicefs-no-share-sc
+    status: {}
+```
+
+</div>
+</div>
+
+<div v-click class="absolute right-18 top-25">
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2">
+    <div text-lg>HuggingFace & ModelScope</div>
+    <span class="text–neutral-500 text-xs">Models, datasets, all in one</span>
+    <div
+      mt-4
+      border="2 solid cyan-800" bg="cyan-800/20"
+      rounded-lg overflow-hidden
+      transition duration-500 ease-in-out
+    >
+      <div bg="cyan-800/40" px-2 py-2 flex items-center>
+        <div i-carbon:filter text-cyan-300 text-xl mr-2 />
+        <span font-bold text-sm>Smart Filtering</span>
+      </div>
+      <div p-2 flex items-center gap-6>
+        <div flex flex-col gap-2 flex-1>
+          <div flex items-center gap-2>
+            <div i-carbon:checkmark-outline text-green-400 />
+            <span text-xs text-nowrap>Include/exclude patterns</span>
+          </div>
+          <div flex items-center gap-2>
+            <div i-carbon:checkmark-outline text-green-400 />
+            <span text-xs text-nowrap>Skip redundant files</span>
+          </div>
+        </div>
+        <div flex-1 font-mono text-xs bg="black/30" rounded-lg px-3 py-2 text="[10px]">
+          <div>options:</div>
+          <!-- <div>  <span text-green-300>include: "*.safetensors"</span></div> -->
+          <div>  <span text-green-300>&nbsp;&nbsp;exclude: "*.bin"</span></div>
+        </div>
+      </div>
+    </div>
+    <div
+      mt-4
+      border="2 solid indigo-800" bg="indigo-800/20"
+      rounded-lg overflow-hidden
+      transition duration-500 ease-in-out
+    >
+      <div bg="indigo-800/40" px-2 py-2 flex items-center>
+        <div i-carbon:delivery text-indigo-300 text-xl mr-2 />
+        <span font-bold text-sm>Advanced Features</span>
+      </div>
+      <div p-2 flex flex-col gap-2>
+        <div grid grid-cols-2 gap-4>
+          <div flex flex-col gap-2 bg="indigo-900/30" rounded-lg p-3>
+            <div font-bold text-sm>Mirroring Support</div>
+            <div text-xs flex items-center gap-1>
+              <div i-carbon:checkmark-outline text-green-400 />
+              <span>Configurable endpoints</span>
+            </div>
+            <div text-xs flex items-center gap-1>
+              <div i-carbon:checkmark-outline text-green-400 />
+              <span>Regional mirrors</span>
+            </div>
+            <div text-xs font-mono bg="black/30" rounded px-2 py-1 mt-1 border="1 solid indigo-700">
+              <div>endpoint: https://hf-mirror.com</div>
+            </div>
+          </div>
+          <div flex flex-col gap-2 bg="indigo-900/30" rounded-lg p-3>
+            <div font-bold text-sm>Token Authentication</div>
+            <div text-xs flex items-center gap-1>
+              <div i-carbon:checkmark-outline text-green-400 />
+              <span>Secure token management</span>
+            </div>
+            <div text-xs flex items-center gap-1>
+              <div i-carbon:checkmark-outline text-green-400 />
+              <span>Private repo access</span>
+            </div>
+            <div text-xs font-mono bg="black/30" rounded px-2 py-1 mt-1 border="1 solid indigo-700">
+              <div>secretRef: hf-token-secret</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+But Datasets isn't just about Python environments - it's also about models and data! Here's an example of loading a model from HuggingFace.
+
+[click] Look at this - we're pulling the Qwen 32B model directly from HuggingFace. But here's where it gets smart - see those filtering options? You can exclude the files you need.
+
+And check out those advanced features - need to use a regional mirror because HuggingFace is slow in your region? Just change the endpoint. Got private models? We handle token authentication securely through Kubernetes secrets.
+
+This means you can have your models ready and waiting, right alongside your environments. No more downloading gigabytes every time you start an inference or job!
+-->
+
+---
+class: py-10
+glowSeed: 215
+---
+
+# How many?
+
+<span>Flexible multi-source data integration</span>
+
+<div mt-8 />
+
+<div flex flex-col items-center>
+  <div
+    grid grid-cols-3 gap-6
+    w-full max-w-200
+  >
+    <!-- Card 1: ML Model Repositories -->
+    <div
+      v-click="1"
+      border="2 solid sky-800" bg="sky-800/20"
+      rounded-lg overflow-hidden
+      transition duration-500 ease-in-out
+      :class="$clicks < 1? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'"
+    >
+      <div bg="sky-800/40" px-4 py-2 flex items-center justify-center text-sm>
+        <span font-bold>ML Model Repositories</span>
+      </div>
+      <div px-4 py-4 flex flex-col gap-3>
+        <div flex items-center gap-3>
+          <div i-logos:hugging-face-icon text-3xl w-10 />
+          <div>
+            <div font-semibold>HuggingFace</div>
+            <div text-xs text-zinc-400>Models, datasets, spaces</div>
+          </div>
+        </div>
+        <div flex items-center gap-3>
+          <img src="/modelscope-color.svg" w-10 />
+          <div>
+            <div font-semibold>ModelScope</div>
+            <div text-xs text-zinc-400>Alibaba AI models</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2: Environment & Package Sources -->
+    <div
+      v-click="2"
+      border="2 solid purple-800" bg="purple-800/20"
+      rounded-lg overflow-hidden
+      transition duration-500 ease-in-out
+      :class="$clicks < 2 ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'"
+    >
+      <div bg="purple-800/40" px-4 py-2 flex items-center justify-center text-sm>
+        <span font-bold>Environment & Packages</span>
+      </div>
+      <div px-4 py-4 flex flex-col gap-3>
+        <div flex items-center gap-3>
+          <div i-logos:conda w-10 />
+          <div>
+            <div font-semibold text-base>Conda</div>
+            <div text-xs text-zinc-400>Environment management</div>
+          </div>
+        </div>
+        <div flex items-center gap-3>
+          <img src="/pixi.png" w-10 />
+          <div>
+            <div font-semibold text-base>Pixi</div>
+            <div text-xs text-zinc-400>Environment management</div>
+          </div>
+        </div>
+        <div flex items-center gap-3>
+          <div i-logos:python w-10 />
+          <div>
+            <div font-semibold text-base>PyPI / pip</div>
+            <div text-xs text-zinc-400>Python packages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3: Storage & Version Control -->
+    <div
+      v-click="3"
+      border="2 solid indigo-800" bg="indigo-800/20"
+      rounded-lg overflow-hidden
+      transition duration-500 ease-in-out
+      :class="$clicks < 3 ? 'opacity-0 translate-y-20' : 'opacity-100 translate-y-0'"
+    >
+      <div bg="indigo-800/40" px-4 py-2 flex items-center justify-center text-sm>
+        <span font-bold>Storage & Version Control</span>
+      </div>
+      <div px-4 py-4 flex flex-col gap-3>
+        <div flex items-center gap-3>
+          <div i-simple-icons:github text-3xl text="white" w-10 />
+          <div>
+            <div font-semibold text-base>Git Repositories</div>
+            <div text-xs text-zinc-400>Code and configurations</div>
+          </div>
+        </div>
+        <div flex items-center gap-3>
+          <div i-logos:aws-s3 text-3xl w-10 />
+          <div>
+            <div font-semibold text-base>S3-compatible</div>
+            <div text-xs text-zinc-400>Cloud storage</div>
+          </div>
+        </div>
+        <div flex items-center gap-3>
+          <div i-carbon:data-volume text-3xl text-blue-300 w-10 />
+          <div>
+            <div font-semibold text-base>Local Volumes</div>
+            <div text-xs text-zinc-400>On-prem storage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    v-click="4"
+    mt-6 flex justify-center
+    transition duration-500 ease-in-out
+    :class="$clicks < 4 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'"
+  >
+    <div
+      bg="sky-900/30"
+      rounded-lg py-3 px-6 text-center flex items-center gap-3
+    >
+      <div i-carbon:connection text-green-300 text-2xl />
+      <div>
+        <div text-xl font-bold>Unified Data Access Layer</div>
+        <div text-sm mt-1>One consistent API to access all your AI assets</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+So how many sources do we support? Well, let me show you!
+
+[click] First, we've got all the ML model repositories - HuggingFace, ModelScope for our friends in China. Whatever your team is using, we've got you covered.
+
+[click] Then there's environment and package sources - Conda, Pixi, PyPI. Mix and match as needed.
+
+[click] And for storage - Git repos for your code, S3-compatible storage for your data, local volumes for on-prem deployments.
+
+[click] But here's the real beauty - it's all through one unified API. You don't need to learn different tools for different sources. Just define your Dataset, and we handle the rest. It's like having a universal translator for all your AI assets!
+-->
+
+---
+class: py-10
+glowSeed: 185
+---
+
+# The Real Problem: Collaboration at Scale
+
+<span>When every team becomes an island</span>
+
+<div mt-6 />
+
+<div flex items-center justify-center gap-8>
+  <div
+    v-click="1"
+    flex flex-col items-center
+    transition duration-500 ease-in-out
+    :class="$clicks < 1 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'"
+  >
+    <div
+      border="2 solid red-800" bg="red-800/20"
+      rounded-lg p-6 w-100
+    >
+      <div flex items-center mb-4>
+        <div i-carbon:warning-alt text-red-300 text-2xl mr-2 />
+        <span font-bold text-xl>The Isolation Problem</span>
+      </div>
+      <div grid grid-cols-2 gap-4>
+        <!-- Team 1 -->
+        <div bg="red-900/30" rounded-lg p-3>
+          <div flex items-center gap-2 mb-2>
+            <div i-carbon:group text-amber-300 />
+            <span font-semibold>Team A</span>
+          </div>
+          <div text-sm space-y-1>
+            <div flex items-center gap-1>
+              <div i-carbon:document text-xs />
+              <span text-xs>llama-3-70b-instruct</span>
+            </div>
+            <div flex items-center gap-1>
+              <div i-carbon:cube text-xs />
+              <span text-xs>PyTorch 2.1 + CUDA 11.8</span>
+            </div>
+            <div text-xs text-red-300 mt-2>Storage: 160GB</div>
+          </div>
+        </div>
+        <!-- Team 2 -->
+        <div bg="red-900/30" rounded-lg p-3>
+          <div flex items-center gap-2 mb-2>
+            <div i-carbon:group text-blue-300 />
+            <span font-semibold>Team B</span>
+          </div>
+          <div text-sm space-y-1>
+            <div flex items-center gap-1>
+              <div i-carbon:document text-xs />
+              <span text-xs>llama-3-70b-instruct</span>
+            </div>
+            <div flex items-center gap-1>
+              <div i-carbon:cube text-xs />
+              <span text-xs>PyTorch 2.1 + CUDA 11.8</span>
+            </div>
+            <div text-xs text-red-300 mt-2>Storage: 160GB</div>
+          </div>
+        </div>
+      </div>
+      <div mt-3 text-center>
+        <span text-xl text-red-400 font-bold>Same model, same env</span>
+        <div text-sm text-red-300>Downloaded twice, stored twice!</div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    v-click="2"
+    flex items-center
+    transition duration-500 ease-in-out
+    :class="$clicks < 2 ? 'opacity-0' : 'opacity-100'"
+  >
+    <div i-carbon:arrow-right text-4xl text-green-400 animate-pulse />
+  </div>
+
+  <div
+    v-click="3"
+    flex flex-col items-center
+    transition duration-500 ease-in-out
+    :class="$clicks < 3 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'"
+  >
+    <div
+      border="2 solid green-800" bg="green-800/20"
+      rounded-lg p-6 w-100
+    >
+      <div flex items-center mb-4>
+        <div i-carbon:share-knowledge text-green-300 text-2xl mr-2 />
+        <span font-bold text-xl>The Sharing Solution</span>
+      </div>
+      <div bg="green-900/30" rounded-lg p-3 mb-3>
+        <div flex items-center gap-2 mb-2>
+          <div i-carbon:data-share text-green-300 />
+          <span font-semibold>Shared Dataset</span>
+        </div>
+        <div text-sm space-y-1>
+          <div flex items-center gap-1>
+            <div i-carbon:document text-xs />
+            <span text-xs>llama-3-70b-instruct</span>
+          </div>
+          <div flex items-center gap-1>
+            <div i-carbon:cube text-xs />
+            <span text-xs>PyTorch 2.1 + CUDA 11.8</span>
+          </div>
+          <div text-xs text-green-300 mt-2>Storage: 160GB (once!)</div>
+        </div>
+      </div>
+      <div grid grid-cols-2 gap-2>
+        <div flex items-center gap-1 text-sm>
+          <div i-carbon:link text-green-400 />
+          <span>Team A → uses reference</span>
+        </div>
+        <div flex items-center gap-1 text-sm>
+          <div i-carbon:link text-green-400 />
+          <span>Team B → uses reference</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  v-click="3"
+  mt-6 flex justify-center
+  transition duration-500 ease-in-out
+  :class="$clicks < 3 ? 'opacity-0' : 'opacity-100'"
+>
+  <div bg="blue-900/30" border="2 solid blue-800" rounded-lg px-5 py-3>
+    <div flex items-center gap-3>
+      <div i-carbon:analytics text-blue-300 text-2xl />
+      <div>
+        <div text-lg font-bold>Enterprise Impact</div>
+        <div text-sm>10 teams × 160GB model = <span text-red-400 line-through>1.6TB</span> → <span text-green-400>160GB</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+Now, let me show you why sharing is so important. This is a real scenario we see all the time.
+
+[click] Team A downloads Llama 3, sets up their PyTorch environment with CUDA - 160GB of storage. Team B needs the same model, same environment - boom, another 160GB. Same model, same environment, but stored twice!
+
+Now imagine you have 10 teams doing this. That's 1.6 terabytes for the same model! It's insane!
+
+[click] [click]
+
+But with Dataset sharing, we store it once, and everyone just references it. One model, one storage footprint, everyone benefits. This is how we turn chaos into collaboration!
+-->
+
+---
+
+# Cross-Namespace Dataset Sharing
+
+<div class="flex relative">
+
+<div class="mt-2 w-75%" v-click>
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg pl-1 pr-1">
+
+```yaml {7-9}
+apiVersion: dataset.baizeai.io/v1alpha1
+kind: Dataset
+metadata:
+  name: llama3-foundation-ref
+  namespace: nlp-team
+spec:
+  source:
+    type: REFERENCE
+    uri: dataset://ml-platform/llama3-70b-foundation
+```
+```yaml {10-11}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fine-tuning-job
+spec:
+  ...
+  volumes:
+  - name: model
+    persistentVolumeClaim:
+      claimName: llama3-foundation-ref  # Auto-created PVC
+```
+  </div>
+</div>
+
+<div v-click class="absolute right-0 top-25">
+  <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4">
+    <div text-xl text-neutral-300>How It Works</div>
+    <ul class="mt-4 space-y-2 text-sm">
+      <li>• Reference points to shared dataset</li>
+      <li>• Controller auto-creates local PVC & PV</li>
+      <li>• No data duplication</li>
+      <li>• Instant access to models</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+
+<!--
+Here's how teams actually use shared datasets. It's beautifully simple!
+
+[click] The NLP team just creates a reference - see that REFERENCE type? They're pointing to the dataset in the ml-platform namespace. Our controller automatically creates a PVC for them, backed by the same JuiceFS data. No copying, no downloading, just instant access!
+
+And look how naturally it fits into your existing workflow - you just mount it like any other PVC. Your training pods don't even know they're using a shared dataset. It's completely transparent!
+
+[click] The benefits are huge - zero download time because the data is already there, 90% storage reduction across your org, and you still maintain namespace isolation for security. It's the best of both worlds!
 -->
 
 ---
@@ -1527,37 +2447,76 @@ glowSeed: 250
 <div mt-4 />
 
 <div
-  class="grid grid-cols-3 gap-4 transition duration-500 ease-in-out h-90"
+  grid grid-cols-3 gap-4
+  transition duration-500 ease-in-out h-90
   :class="$clicks < 1 ? 'opacity-0 scale-90' : 'opacity-100 scale-100'"
 >
   <v-clicks>
-    <StatCard
-      title="Setup time cost"
-      value="5-10x"
-      direction="up"
-      icon="i-carbon:lightning"
-      themeColor="success"
-      subtitle="With shared environments"
-      tag="From hours to minutes"
-    />
-    <StatCard
-      title="Save storage"
-      value="90%"
-      direction="down"
-      icon="i-carbon:vmdk-disk"
-      themeColor="info"
-      subtitle="Using JuiceFS dedup"
-      tag="10GB → 1GB typical savings"
-    />
-    <StatCard
-      title="Time cost"
-      value="75%"
-      direction="down"
-      icon="i-carbon:badge"
-      themeColor="accent"
-      subtitle="No more environment setup"
-      tag="Instant environment activation"
-    />
+  <div
+    border="2 solid lime-800" bg="lime-800/20"
+    rounded-lg p-5 flex flex-col items-center
+    transition-all duration-500 h-full
+  >
+    <div mb-4 flex-1 flex items-center justify-center>
+      <div i-carbon:lightning text-yellow-500 text="[100px]" />
+    </div>
+    <div font-bold text-xl>Setup time cost</div>
+    <div
+      text-lime-300 text-2xl font-bold mt-2
+      flex items-center gap-1
+    >
+      <span>5-10x</span>
+      <div i-carbon:arrow-up text-green-400 />
+    </div>
+    <div text-sm opacity-70 mt-1>With shared environments</div>
+    <div text-xs mt-3 bg="lime-900/30" rounded-lg px-3 py-1>
+      From hours to minutes
+    </div>
+  </div>
+
+  <div
+    border="2 solid cyan-800" bg="cyan-800/20"
+    rounded-lg p-5 flex flex-col items-center
+    transition-all duration-500 h-full
+  >
+    <div mb-4 flex-1 flex items-center justify-center>
+      <div i-carbon:vmdk-disk text-indigo-500 text="[100px]" />
+    </div>
+    <div font-bold text-xl>Save storage</div>
+    <div
+      text-cyan-300 text-2xl font-bold mt-2
+      flex items-center gap-1
+    >
+      <span>90%</span>
+      <div i-carbon:arrow-down text-green-400 />
+    </div>
+    <div text-sm opacity-70 mt-1>Using JuiceFS dedup</div>
+    <div text-xs mt-3 bg="cyan-900/30" rounded-lg px-3 py-1>
+      10GB → 1GB typical savings
+    </div>
+  </div>
+
+  <div
+    border="2 solid purple-800" bg="purple-800/20"
+    rounded-lg p-5 flex flex-col items-center
+    transition-all duration-500 h-full
+  >
+    <div mb-4 flex-1 flex items-center justify-center>
+      <div i-carbon:badge text-violet-500 text="[100px]" />
+    </div>
+    <div font-bold text-xl>Time cost</div>
+    <div
+      text-purple-300 text-2xl font-bold mt-2
+      flex items-center gap-1
+    >
+      <span>75%</span>
+      <div i-carbon:arrow-down text-green-400 />
+    </div>
+    <div text-sm opacity-70 mt-1>No more environment setup</div>
+    <div text-xs mt-3 bg="purple-900/30" rounded-lg px-3 py-1>
+      Instant environment activation
+    </div>
+  </div>
   </v-clicks>
 </div>
 

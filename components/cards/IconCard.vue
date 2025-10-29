@@ -1,46 +1,17 @@
 <!--
-IconCard Component - Minimal icon-focused cards for quick visual communication
-Perfect for displaying key concepts, tools, or status indicators
-
-Purpose:
-- Large, prominent icons for immediate visual recognition
-- Minimal content - just icon and title
-- Perfect for category displays, tool lists, or status indicators
-- Supports Milestone theme colors and click animations
-
-Visual Layout:
-┌─────────────────────────┐
-│                         │
-│         [ICON]          │ ← Large 20x20 icon, centered
-│        80x80px          │
-│                         │
-├─────────────────────────┤
-│     Category Name       │ ← Footer with title
-│    (centered text)      │ ← Themed background
-└─────────────────────────┘
+Simple Icon Card Component - Just icon + title, minimal content
 
 Usage:
-<IconCard 
+<IconCards 
   :items="[
     {
       title: 'ABI Incompatibility',
       icon: 'i-carbon:cics-program',
       themeColor: 'warning',
       clickIndex: 1
-    },
-    {
-      title: 'Performance Issues', 
-      icon: 'i-carbon:performance',
-      themeColor: 'error'
     }
   ]"
 />
-
-Features:
-- Click animations with v-click integration
-- Milestone brand color theming (primary, secondary, accent, etc.)
-- Responsive flex layout
-- Hover and active state animations
 -->
 
 <template>
@@ -69,8 +40,6 @@ Features:
 </template>
 
 <script setup lang="ts">
-import { useSlideContext } from '@slidev/client'
-
 interface IconCardItem {
   title: string
   icon: string
@@ -83,9 +52,6 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-
-// Get slide context for click tracking
-const { $clicks } = useSlideContext()
 
 // Get card styles
 const getCardStyles = (item: IconCardItem) => {
