@@ -14,7 +14,7 @@
       themeColor: 'info',
       icon: 'i-carbon:list',
       pros: [
-        'Import and catalog datasets (I-Lids, NGD, MP4, annotated ground truth)',
+        'Import and catalog datasets (I-Lids, MEVA, ShangaiTech)',
         'Guided workflow for creating benchmarking tests (detection thresholds, scenario settings)',
         'Real-time progress tracking and drill-down metric visualization',
         'Automated comparison against ground truth and previous runs',
@@ -29,14 +29,15 @@
       themeColor: 'success',
       icon: 'i-carbon:chart-bar',
       pros: [
-        '≥95% recall and ≥90% precision on benchmark datasets',
-        '≤15% false positive rate in event-based analysis',
-        'Benchmarking suite supports 100+ concurrent test runs',
-        'All results exportable and reproducible'
+        'Testing both inference and performance results',
+        'Benchmarking could run the full pipeline isolated',
+        'All results exportable and reproducible, and shown in Grafana or similar '
       ]
-    }
+    },
   ]"
-/>
-<template #footer>
-  <div class="text-xs opacity-50">EPIC 3: Benchmarking & Validation overview</div>
-</template>
+>
+  <template #bottom>
+    <div class="text-xs opacity-50">EPIC 3: Benchmarking & Validation overview</div>
+  </template>
+</EpicTemplate>
+

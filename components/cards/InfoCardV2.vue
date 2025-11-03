@@ -20,29 +20,8 @@
     >
       <template #content>
         <div class="card-content-scroll">
-          <!-- Success Metrics Switch -->
-          <template v-if="item.themeColor === 'success'">
-            <div class="mb-3">
-              <div class="flex gap-2 items-center">
-                <span class="font-bold text-theme-success">Success Criteria</span>
-                <label class="switch">
-                  <input type="checkbox" v-model="item._switch" disabled />
-                  <span class="slider"></span>
-                </label>
-              </div>
-              <div class="mt-2">
-                <ul class="list-disc pl-4">
-                  <li v-for="(criteria, idx) in item.pros" :key="'criteria-' + idx">{{ criteria }}</li>
-                </ul>
-              </div>
-              <div class="mt-2">
-                <span class="font-bold text-theme-info">Current Results:</span>
-                <div class="text-xs text-zinc-400">(empty)</div>
-              </div>
-            </div>
-          </template>
           <!-- Progressive reveal custom rendering -->
-          <template v-else-if="item.revealMode === 'progressive'">
+          <template v-if="item.revealMode === 'progressive'">
             <p v-if="item.description" class="text-xs mb-2 opacity-80">{{ item.description }}</p>
             <div :class="['flex flex-col', compact ? 'gap-1.5' : 'gap-2']">
               <div

@@ -29,6 +29,7 @@
     >
       <slot name="bottom" />
     </div>
+      <div v-if="dividerBelow" style="width:100%;margin:12px 0 0 0;"><hr /></div>
   </div>
 </template>
 
@@ -50,6 +51,7 @@
 import { computed, ref, onMounted, onBeforeUnmount, watch, provide } from 'vue'
 
 interface Props {
+  dividerBelow?: boolean // show divider below content
   maxWidth?: number | string    // numeric => rem units; string => pass through (class or CSS size)
   padded?: boolean              // apply default generous padding
   scroll?: boolean              // force scrolling body (default true for safety)
@@ -71,6 +73,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  dividerBelow: false,
   maxWidth: '100%',
   padded: true,           // default: padding enabled for better spacing
   scroll: true,           // keep safe scrolling
