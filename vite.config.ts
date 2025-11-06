@@ -38,7 +38,7 @@ export default defineConfig({
   publicDir: 'public',
   // Add explicit favicon handling
   define: {
-    __FAVICON__: '"/favicon.ico"'
+    __FAVICON__: '"./favicon.ico"'
   },
   plugins: [
     removeManualChunks(),

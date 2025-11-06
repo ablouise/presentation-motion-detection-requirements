@@ -38,14 +38,14 @@ const epic2Items = [
     icon: 'i-carbon:user-profile',
     pros: [
       'As an integrator, I want the system to auto-learn ROI zones so I can set up cameras quickly and accurately.',
-      'As an end user, I want to adjust sensitivity and presets (zones) easily so the system matches my environment and needs.',
+      'As an administrator, I want to adjust sensitivity and presets (zones) easily so the system matches my environment and needs.',
       'As a support engineer, I want configuration changes to be logged so I can troubleshoot issues efficiently.'
     ]
   }
 ]
 </script>
 
-# EPIC 2: Configuration & User Experience
+# EPIC 1: Configuration & User Experience
 
 <EpicTemplate
   :items="epic2Items"

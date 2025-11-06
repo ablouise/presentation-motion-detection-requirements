@@ -20,20 +20,20 @@ drawings:
 transition: slide-left
 # enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
-remoteAssets: build 
-routerMode: hash 
+remoteAssets: build
+routerMode: hash
+
+
 ---
 
 # Activitiy Detection
 
-Requirements and Timeline...
+Requirements and Timeline
 
 <div @click="$slidev.nav.next" class="navigation-hint" hover:bg="white op-10">
   Press Space for next page <carbon:arrow-right />
 </div>
 
-
 ---
 src: ./pages/motion-detection-slides/slide-motion-detection.md
 ---
-

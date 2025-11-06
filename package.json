@@ -1,11 +1,17 @@
 {
+  "version": "1.0.0",
+  "description": "Motion detection presentation desktop app",
+  "author": "Your Name <your@email.com>",
+  "main": "main.cjs",
   "name": "aienabledalarmmanager",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open --remote",
-    "export": "slidev export --with-clicks --per-slide --wait-until none"
+    "export": "slidev export --with-clicks --per-slide --wait-until none",
+    "electron": "electron main.cjs",
+    "build:electron": "electron-builder"
   },
   "dependencies": {
     "@antfu/eslint-config": "^4.13.2",
@@ -49,5 +55,32 @@
     "vite": "^6.3.5",
     "vite-plugin-singlefile": "^2.3.0",
     "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2"
+  },
+  "build": {
+    "appId": "com.yourdomain.presentation",
+    "productName": "PresentationMotionDetection",
+    "files": [
+      "dist/**/*",
+      "main.cjs"
+    ],
+      "directories": {
+        "output": "dist",
+        "buildResources": "public"
+      },
+      "icon": "public/favicon.png",
+    "win": {
+      "target": "portable"
+    },
+    "linux": {
+      "target": "AppImage"
+    },
+    "mac": {
+      "target": "dmg"
+    }
   }
 }
